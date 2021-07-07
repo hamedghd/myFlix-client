@@ -11,14 +11,16 @@ export class MainView extends React.Component {
       ]
     }
   }
+  // Uses MainView's state to control its UI.
   render() {
+    const { movies } = this.state;
+
+    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+
     return (
       <div className="main-view">
-        <div>The Godfather</div>
-        <div>The Godfather: Part II</div>
-        <div>The Dark Knight</div>
+        {movies.map(movie => <div key={movie._id}>{movie.Title}</div>)}
       </div>
-
     );
   }
 }
