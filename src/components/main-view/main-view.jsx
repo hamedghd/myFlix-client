@@ -9,13 +9,15 @@ export class MainView extends React.Component {
         { _id: 1, Title: 'The Godfather', Description: 'desc1...', ImagePath: '...' },
         { _id: 2, Title: 'The Godfather: Part II', Description: 'desc2...', ImagePath: '...' },
         { _id: 3, Title: 'The Dark Knight', Description: 'desc3...', ImagePath: '...' }
-      ]
+      ],
+      // adds a new state variable to identify whether there was a user click or not.
+      selectedMovie: null
     }
   }
   // Uses MainView's state to control its UI.
   render() {
-    const { movies } = this.state;
-
+    const { movies, selectedMovie } = this.state;
+    if (selectedMovie) return <MovieView movie={selectedMovie} />;
     if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
 
     return (
