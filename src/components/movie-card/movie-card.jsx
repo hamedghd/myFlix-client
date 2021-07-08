@@ -4,6 +4,6 @@ export class MovieCard extends React.Component {
   render() {
     // Extracts data
     const { movieData } = this.props;
-    return <div className="movie-card" >{movie.Title}</div>;
+    return <div className="movie-card" >{movieData.Title}</div>;
   }
 }
