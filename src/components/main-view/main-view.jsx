@@ -33,7 +33,8 @@ export class MainView extends React.Component {
   // Uses MainView's state to control its UI.
   render() {
     const { movies, selectedMovie } = this.state;
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+    // If the movies state array be empty, it doesn't display anything.
+    if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <div className="main-view">
