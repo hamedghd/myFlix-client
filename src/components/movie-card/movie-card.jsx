@@ -10,7 +10,7 @@ export class MovieCard extends React.Component {
 
 // Sets the static propTypes property.
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
+  movieData: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
