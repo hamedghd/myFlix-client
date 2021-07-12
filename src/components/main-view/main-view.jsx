@@ -11,7 +11,9 @@ export class MainView extends React.Component {
       // Sets movies state to an empty array.
       movies: [],
       // adds a new state variable to identify whether there was a user click or not.
-      selectedMovie: null
+      selectedMovie: null,
+      // Sets initial value for user state to null
+      user: null
     }
   }
   componentDidMount() {
