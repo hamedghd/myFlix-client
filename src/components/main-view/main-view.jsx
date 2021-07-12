@@ -13,6 +13,18 @@ export class MainView extends React.Component {
       selectedMovie: null
     }
   }
+  componentDidMount() {
+    // Queries my myFlix API server’s /movies endpoint with a get request using Axios:
+    axios.get('https://myflix-movieapi.herokuapp.com/movies')
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
