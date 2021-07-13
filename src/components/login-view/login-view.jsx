@@ -15,7 +15,6 @@ export function LoginView(props) {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthday);
     props.onRegister(username);
   }
 
