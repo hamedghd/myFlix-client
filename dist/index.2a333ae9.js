@@ -22027,7 +22027,7 @@ class MainView extends _reactDefault.default.Component {
             // Sets initial value for user state to null
             user: null,
             // Sets initial value for register state to null
-            register: null
+            register: true
         };
     }
     componentDidMount() {
@@ -22058,12 +22058,23 @@ class MainView extends _reactDefault.default.Component {
     // Uses MainView's state to control its UI.
     render() {
         const { movies , selectedMovie , user , register  } = this.state;
-        /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
+        /* If there is no user, and is registered the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/ if (!user && register) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
             onLoggedIn: (user1)=>this.onLoggedIn(user1)
+            ,
+            onRegister: (register1)=>this.onRegister(register1)
             ,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 55
+            },
+            __self: this
+        }));
+        /* If there is no user and no register , the RegistrationView  is rendered. */ if (!user && !register) return(/*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
+            onRegister: (register1)=>this.onRegister(register1)
+            ,
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
+                lineNumber: 57
             },
             __self: this
         }));
@@ -22072,7 +22083,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 58
+                lineNumber: 60
             },
             __self: this
         }));
@@ -22080,7 +22091,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 61
+                lineNumber: 63
             },
             __self: this
         }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
@@ -22090,7 +22101,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 64
+                lineNumber: 66
             },
             __self: this
         }) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
@@ -22101,7 +22112,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                    lineNumber: 66
+                    lineNumber: 68
                 },
                 __self: this
             })
@@ -24338,20 +24349,26 @@ function LoginView(props) {
         console.log(username, password);
         /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
-    const handleRegister = (e)=>{
-        e.preventDefault();
-        props.onRegister(username);
+    const handleRegister = ()=>{
+        let register = false;
+        props.onRegister(register);
     };
-    return(/*#__PURE__*/ _reactDefault.default.createElement("form", {
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 22
+            lineNumber: 23
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("form", {
+        __source: {
+            fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 24
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 23
+            lineNumber: 25
         },
         __self: this
     }, "Username:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24361,13 +24378,13 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 25
+            lineNumber: 27
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 27
+            lineNumber: 29
         },
         __self: this
     }, "Password:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24377,7 +24394,7 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 29
+            lineNumber: 31
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -24385,15 +24402,15 @@ function LoginView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 31
+            lineNumber: 33
         },
         __self: this
-    }, "Submit"), " or ", /*#__PURE__*/ _reactDefault.default.createElement("button", {
+    }, "Submit")), " or ", /*#__PURE__*/ _reactDefault.default.createElement("button", {
         type: "submit",
         onClick: handleRegister,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 32
+            lineNumber: 36
         },
         __self: this
     }, "Sign up!")));
@@ -24438,21 +24455,23 @@ function RegistrationView(props) {
     const [password, setPassword] = _react.useState('');
     const [email, setEmail] = _react.useState('');
     const [birthday, setBirthday] = _react.useState('');
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+        alert('Thanks for signing up. You can log in now!');
         e.preventDefault();
         console.log(username, password, email, birthday);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onRegister(username);
+        let register = true;
+        /* Send a request to the server for authentication */ /* then call props.onRegister(username) */ props.onRegister(register);
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement("form", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 19
+            lineNumber: 21
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 20
+            lineNumber: 22
         },
         __self: this
     }, "Username:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24462,13 +24481,13 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 22
+            lineNumber: 24
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 24
+            lineNumber: 26
         },
         __self: this
     }, "Password:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24478,13 +24497,13 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 26
+            lineNumber: 28
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 28
+            lineNumber: 30
         },
         __self: this
     }, "Email:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24494,13 +24513,13 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 30
+            lineNumber: 32
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 32
+            lineNumber: 34
         },
         __self: this
     }, "Birthday:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24510,7 +24529,7 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 34
+            lineNumber: 36
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -24518,7 +24537,7 @@ function RegistrationView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 36
+            lineNumber: 38
         },
         __self: this
     }, "Submit")));
