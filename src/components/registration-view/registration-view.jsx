@@ -7,12 +7,14 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    alert('Thanks for signing up. You can log in now!');
     e.preventDefault();
     console.log(username, password, email, birthday);
+    let register = true;
     /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onRegister(username);
+    /* then call props.onRegister(username) */
+    props.onRegister(register);
   };
 
   return (
