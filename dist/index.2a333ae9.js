@@ -24384,7 +24384,13 @@ function LoginView(props) {
             lineNumber: 26
         },
         __self: this
-    }, "Submit")));
+    }, "Submit"), " or ", /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        __source: {
+            fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 27
+        },
+        __self: this
+    }, "Sign up!")));
 }
 _s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
