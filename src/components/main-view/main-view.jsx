@@ -16,7 +16,7 @@ export class MainView extends React.Component {
       // Sets initial value for user state to null
       user: null,
       // Sets initial value for register state to null
-      register: null
+      register: true
     }
   }
   componentDidMount() {
@@ -51,8 +51,10 @@ export class MainView extends React.Component {
   // Uses MainView's state to control its UI.
   render() {
     const { movies, selectedMovie, user, register } = this.state;
-    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    /* If there is no user, and is registered the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
+    if (!user && register) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegister={register => this.onRegister(register)} />;
+    /* If there is no user and no register , the RegistrationView  is rendered. */
+    if (!user && !register) return <RegistrationView onRegister={register => this.onRegister(register)} />;
 
     // Before the movies have been loaded.
     if (movies.length === 0) return <div className="main-view" />;
