@@ -22147,17 +22147,48 @@ var _cardDefault = parcelHelpers.interopDefault(_card);
 class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movieData , onMovieClick  } = this.props;
-        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-card",
-            onClick: ()=>{
-                onMovieClick(movieData);
-            },
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
-                lineNumber: 9
+                lineNumber: 10
             },
             __self: this
-        }, movieData.Title));
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
+            variant: "top",
+            src: movieData.ImagePath,
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 11
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 13
+            },
+            __self: this
+        }, movieData.Title), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 14
+            },
+            __self: this
+        }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            onClick: ()=>onMovieClick(movieData)
+            ,
+            variant: "link",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 15
+            },
+            __self: this
+        }, "Open"))));
     }
 }
 // Sets the static propTypes property.
