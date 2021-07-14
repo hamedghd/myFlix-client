@@ -4,6 +4,8 @@ import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 export class MainView extends React.Component {
   // Movies state will hold the list of movies.
   constructor() {
@@ -63,10 +65,22 @@ export class MainView extends React.Component {
       <div className="main-view">
         {/* If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned */}
         {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
-          ))}
+          ? (
+            <Row className="justify-content-md-center">
+              <Col md={8}>
+                <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+              </Col>
+            </Row>
+          )
+          : (
+            <Row className="justify-content-md-center">
+              {movies.map(movie => (
+                <Col md={3}>
+                  <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
+                </Col>
+              ))}
+            </Row>
+          )}
       </div>
     );
 
