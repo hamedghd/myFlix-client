@@ -6,6 +6,8 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import './main-view.scss';
 export class MainView extends React.Component {
   // Movies state will hold the list of movies.
   constructor() {
@@ -67,7 +69,7 @@ export class MainView extends React.Component {
         {selectedMovie
           ? (
             <Row className="justify-content-md-center">
-              <Col md={8}>
+              <Col xs={12} md={8}>
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
               </Col>
             </Row>
@@ -75,7 +77,7 @@ export class MainView extends React.Component {
           : (
             <Row className="justify-content-md-center">
               {movies.map(movie => (
-                <Col md={3}>
+                <Col xs={12} md={3}>
                   <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
                 </Col>
               ))}
