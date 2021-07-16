@@ -23,7 +23,7 @@ export function RegistrationView(props) {
 
   return (
     <Row className="justify-content-md-center">
-      <Col md={3} className="registration-style">
+      <Col md={6} lg={4} className="registration-style">
         <h1 className="title">Sign up to myFlix!</h1>
         <Form>
           <Form.Group controlId="formUsername" >
@@ -46,7 +46,7 @@ export function RegistrationView(props) {
             <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
+          <Button className="button-style" variant="primary" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </Form>
