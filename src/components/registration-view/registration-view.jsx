@@ -23,9 +23,10 @@ export function RegistrationView(props) {
 
   return (
     <Row className="justify-content-md-center">
-      <Col md={3}>
+      <Col md={3} className="registration-style">
+        <h1 className="title">Sign up to myFlix!</h1>
         <Form>
-          <Form.Group controlId="formUsername">
+          <Form.Group controlId="formUsername" >
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
           </Form.Group>
