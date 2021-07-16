@@ -21,8 +21,8 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view" bg="light">
-        <div className="movie-poster centered">
-          <img src={movie.ImagePath} />
+        <div className="centered">
+          <img className="movie-poster" src={movie.ImagePath} />
         </div>
         <div className="movie-title" bg="light">
           <span className="label">Title: </span>
