@@ -13,8 +13,12 @@ class MyFlixApplication extends React.Component {
   render() {
     return (
       <Container fluid="true">
-        <HeaderView />
-        <MainView />
+        <div className="header-style">
+          <HeaderView />
+        </div>
+        <div className="my-flix">
+          <MainView />
+        </div>
       </Container>
     );
   }
