@@ -6,7 +6,7 @@ import imageurl from "url:./myflix.png"
 export class HeaderView extends React.Component {
   render() {
     return (
-      <Navbar className="navbar-style">
+      <Navbar className="navbar-style" bg="dark" variant="dark">
         <Navbar.Brand href="/">
           <img src={imageurl} alt="logo"
             width="100"
