@@ -24,7 +24,7 @@ export function RegistrationView(props) {
   return (
     <Row className="justify-content-md-center">
       <Col md={3}>
-        <form>
+        <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
@@ -48,7 +48,7 @@ export function RegistrationView(props) {
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
-        </form>
+        </Form>
       </Col>
     </Row>
   );
