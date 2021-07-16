@@ -2,8 +2,8 @@
   color: steelblue;
 }
 .movie-card {
-  height: 800px;
-  margin: 10px;
+  height: 98%;
+  margin: 2%;
 }
 
 .open-button {
@@ -20,6 +20,7 @@
   border-radius: 0.25rem;
   padding: 10px;
   text-align: justify;
+  margin: 10px;
 }
 
 .centered {
