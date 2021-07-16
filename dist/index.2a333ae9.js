@@ -23513,13 +23513,14 @@ class MovieView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-poster centered",
+            className: "centered",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
                 lineNumber: 24
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+            className: "movie-poster",
             src: movie.ImagePath,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
@@ -26303,7 +26304,8 @@ function RegistrationView(props) {
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
-        md: 3,
+        md: 6,
+        lg: 4,
         className: "registration-style",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
@@ -26412,6 +26414,7 @@ function RegistrationView(props) {
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        className: "button-style",
         variant: "primary",
         type: "submit",
         onClick: handleSubmit,
@@ -26499,6 +26502,8 @@ class HeaderView extends _reactDefault.default.Component {
     render() {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
             className: "navbar-style",
+            bg: "dark",
+            variant: "dark",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\header-view\\header-view.jsx",
                 lineNumber: 9
