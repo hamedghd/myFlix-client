@@ -27,7 +27,7 @@ export function LoginView(props) {
   return (
     <Row className="justify-content-md-center">
       <Col md={3}>
-        <form>
+        <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
@@ -41,7 +41,7 @@ export function LoginView(props) {
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
-        </form>
+        </Form>
 
         {" or if you have no account, please "}
         <Button variant="primary" type="submit" onClick={handleRegister}>
