@@ -7,13 +7,29 @@
 }
 
 .movie-card {
-  height: 98%;
-  margin: 2%;
-  //border: 1px solid var(--txt1-color) !important;
+  width: 200px;
+  height: 600px;
 }
 
 .card-style {
-  background-color: var(--bg3-color);
+  //background-color: var(--bg3-color);
+}
+
+.card-style__image {
+  height: 300px;
+}
+
+.card-style__title {
+  height: 100px;
+}
+// It truncates the long texts.
+.card-style__text {
+  height: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;  
 }
 
 .button-style {
