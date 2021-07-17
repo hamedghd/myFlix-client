@@ -64,14 +64,14 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
+      <div>
         {/* If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned */}
         {selectedMovie
           ? (
             //<Row className="justify-content-md-center ">
             <Row className="d-flex flex-column justify-content-between align-items-center ">
 
-              <Col xs={12} sm={10} md={8} lg={6} className="d-flex align-items-center">
+              <Col xs={12} sm={10} md={8} lg={6} className="d-flex flex-column align-items-center">
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
               </Col>
             </Row>
