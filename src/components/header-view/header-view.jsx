@@ -1,9 +1,11 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import imageurl from "url:./myflix.png"
+import imageurl from "url:./myflix.png";
+
 
 export class HeaderView extends React.Component {
+
   render() {
     return (
       <Navbar className="navbar-style" bg="dark" variant="dark">
@@ -19,6 +21,9 @@ export class HeaderView extends React.Component {
             <Nav.Link href="#link">About</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        {/*<Navbar.Text>
+          Signed in as: <a href="#login">username</a>
+        </Navbar.Text>*/}
       </Navbar >
     );
   }
