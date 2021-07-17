@@ -71,7 +71,7 @@ export class MainView extends React.Component {
             //<Row className="justify-content-md-center ">
             <Row className="d-flex flex-column justify-content-between align-items-center ">
 
-              <Col xs={12} sm={10} md={8} lg={6} >
+              <Col xs={12} sm={10} md={8} lg={6} className="d-flex align-items-center">
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
               </Col>
             </Row>
