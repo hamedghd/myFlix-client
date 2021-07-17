@@ -71,15 +71,15 @@ export class MainView extends React.Component {
             //<Row className="justify-content-md-center ">
             <Row className="d-flex flex-column justify-content-between align-items-center ">
 
-              <Col xs={12} sm={10} md={8} className="d-flex flex-column align-items-center">
+              <Col xs={12} sm={10} md={8} lg={6} >
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
               </Col>
             </Row>
           )
           : (
-            <Row className="d-flex justify-content-between align-items-center">
+            <Row className="d-flex justify-content-start align-items-center mx-1">
               {movies.map(movie => (
-                <Col xs={12} sm={6} md={4} lg={3} className="d-flex flex-column align-items-center">
+                <Col xs={12} sm={6} md={4} lg={3} xl={2} className="d-flex flex-column align-items-center" >
                   <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
                 </Col>
               ))}
@@ -87,9 +87,5 @@ export class MainView extends React.Component {
           )}
       </div>
     );
-
-
-
-
   }
 }
