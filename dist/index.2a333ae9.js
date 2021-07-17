@@ -880,7 +880,7 @@ var _indexScss = require("./index.scss");
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
-            className: "container-fluid",
+            className: "container-fluid p-0",
             fluid: "true",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\index.jsx",
@@ -22252,14 +22252,14 @@ class MovieCard extends _reactDefault.default.Component {
             },
             __self: this
         }, movieData.Title), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
-            className: "card-style__text m-2 p-0",
+            className: "card-style__text m-1 p-0",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-card\\movie-card.jsx",
                 lineNumber: 16
             },
             __self: this
         }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-            className: "button-style btn-sm",
+            className: "button-style btn-sm btn-block",
             onClick: ()=>onMovieClick(movieData)
             ,
             variant: "primary",
