@@ -12,7 +12,7 @@ import './index.scss';
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <Container className="container-fluid" fluid="true">
+      <Container className="container-fluid p-0" fluid="true">
         <div className="header-style">
           <HeaderView />
         </div>
