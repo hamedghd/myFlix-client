@@ -8,7 +8,7 @@
 
 .movie-card {
   width: 200px;
-  height: 600px;
+  height: 300px;
 }
 
 .card-style {
@@ -16,20 +16,25 @@
 }
 
 .card-style__image {
-  height: 300px;
+  height: 150px !important;
+  width: 75px !important;
+  margin: 2px auto;
+  object-fit: fill !important;
 }
 
 .card-style__title {
-  height: 100px;
+  height: 25px;
+  font-size: 12px !important;
 }
 // It truncates the long texts.
 .card-style__text {
-  height: 100px;
+  height: 50px;
+  font-size: 11px !important;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis; 
 }
 
 .button-style {
