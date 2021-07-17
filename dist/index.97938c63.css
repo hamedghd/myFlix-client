@@ -26,13 +26,13 @@
 }
 
 .movie-card {
-  width: 200px;
+  width: 180px;
   height: 300px;
 }
 
 .card-style__image {
   height: 150px !important;
-  width: 75px !important;
+  width: 100px !important;
   margin: 2px auto;
   object-fit: fill !important;
 }

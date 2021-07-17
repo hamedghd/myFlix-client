@@ -22142,7 +22142,7 @@ class MainView extends _reactDefault.default.Component {
             xs: 12,
             sm: 10,
             md: 8,
-            className: "d-flex flex-column align-items-center",
+            lg: 6,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 74
@@ -22159,7 +22159,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }))) : /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
-            className: "d-flex justify-content-between align-items-center",
+            className: "d-flex justify-content-start align-items-center mx-1",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 80
@@ -22170,6 +22170,7 @@ class MainView extends _reactDefault.default.Component {
                 sm: 6,
                 md: 4,
                 lg: 3,
+                xl: 2,
                 className: "d-flex flex-column align-items-center",
                 __source: {
                     fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
