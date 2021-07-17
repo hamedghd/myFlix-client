@@ -7,7 +7,7 @@
 }
 
 .movie-card {
-  width: 180px;
+  width: 220px;
   height: 300px;
 }
 
@@ -24,12 +24,12 @@
 
 .card-style__title {
   height: 25px;
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 // It truncates the long texts.
 .card-style__text {
-  height: 50px;
-  font-size: 11px !important;
+  height: 55px;
+  font-size: 12px !important;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
