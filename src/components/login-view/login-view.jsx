@@ -26,7 +26,7 @@ export function LoginView(props) {
 
   return (
     <Row className="justify-content-md-center">
-      <Col md={6} lg={4} className="login-style">
+      <Col md={6} lg={4} className="d-flex flex-column align-items-center text-center bg-dark m-2 p-2">
         <h1 className="title">Log in to myFlix!</h1>
         <Form>
           <Form.Group controlId="formUsername">
