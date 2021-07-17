@@ -6,17 +6,25 @@
   --font-family: 'Lato', sans-serif;
 }
 .movie-poster {
-  width: 100%;
+  width: 50%;
   margin: 10px auto;
 }
 
 .movie-view {
-  background-color: var(--bg3-color);
+  //background-color: var(--bg3-color);
   border: 1px solid var(--txt1-color);
   border-radius: .25rem;
   padding: 10px;
   text-align: justify;
   margin: 10px;
+}
+
+.movie-title {
+  margin: 20px 0;
+}
+
+.movie-description {
+  margin: 20px 0;
 }
 .centered {
   text-align: center;
