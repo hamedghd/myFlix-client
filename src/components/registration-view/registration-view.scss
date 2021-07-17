@@ -9,10 +9,12 @@
 .registration-style {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg3-color);
+  //background-color: var(--bg3-color);
   padding: 50px;
   text-align: center;
   align-items: center;
+  margin: 50px 10%;
+  max-width: 80%;
 }
 
 .title {

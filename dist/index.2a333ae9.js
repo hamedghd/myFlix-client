@@ -25009,7 +25009,7 @@ function LoginView(props) {
     }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
         md: 6,
         lg: 4,
-        className: "d-flex flex-column align-items-center text-center bg-dark m-2 p-2",
+        className: "login-style d-flex flex-column align-items-center text-center bg-dark p-2",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 29
@@ -26310,7 +26310,7 @@ function RegistrationView(props) {
     }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
         md: 6,
         lg: 4,
-        className: "registration-style",
+        className: "registration-style bg-dark",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 27

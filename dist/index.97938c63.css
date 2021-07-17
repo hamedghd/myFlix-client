@@ -14,6 +14,7 @@
 .my-flix {
   background-color: var(--bg1-color);
   color: var(--txt1-color);
+  min-height: 650px;
 }
 :root {
   --bg1-color: #65ccb8;
@@ -113,6 +114,11 @@
   font-family: var(--font-family);
 }
 
+.login-style {
+  margin: 50px 10%;
+  max-width: 80%;
+}
+
 .button-style {
   background-color: var(--bg2-color) !important;
   border-color: var(--txt1-color) !important;
@@ -129,10 +135,11 @@
 .registration-style {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg3-color);
   padding: 50px;
   text-align: center;
   align-items: center;
+  margin: 50px 10%;
+  max-width: 80%;
 }
 
 .title {

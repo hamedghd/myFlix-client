@@ -24,7 +24,7 @@ export function RegistrationView(props) {
 
   return (
     <Row className="justify-content-md-center">
-      <Col md={6} lg={4} className="registration-style">
+      <Col md={6} lg={4} className="registration-style bg-dark">
         <h1 className="title">Sign up to myFlix!</h1>
         <Form>
           <Form.Group controlId="formUsername" >
