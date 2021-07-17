@@ -13,8 +13,8 @@ export class MovieCard extends React.Component {
         <Card.Img className="card-style__image bg-dark" variant="top" src={movieData.ImagePath} />
         <Card.Body className="card-style p-1">
           <Card.Title className="card-style__title text-center mx-auto">{movieData.Title}</Card.Title>
-          <Card.Text className="card-style__text m-2 p-0">{movieData.Description}</Card.Text>
-          <Button className="button-style btn-sm" onClick={() => onMovieClick(movieData)} variant="primary">Open</Button>
+          <Card.Text className="card-style__text m-1 p-0">{movieData.Description}</Card.Text>
+          <Button className="button-style btn-sm btn-block" onClick={() => onMovieClick(movieData)} variant="primary">Open</Button>
         </Card.Body>
       </Card >
     );
