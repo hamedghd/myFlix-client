@@ -19,7 +19,7 @@ export function LoginView(props) {
       Password: password
     })
       /* then call props.onLoggedIn(username) */
-      .then(Response => {
+      .then(response => {
         const data = response.data;
         props.onLoggedIn(data);
       })

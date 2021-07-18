@@ -25018,7 +25018,7 @@ function LoginView(props) {
         /* Send a request to the server for authentication */ _axiosDefault.default.post('https://myflix-movieapi.herokuapp.com/login', {
             Username: username,
             Password: password
-        })/* then call props.onLoggedIn(username) */ .then((Response1)=>{
+        })/* then call props.onLoggedIn(username) */ .then((response)=>{
             const data = response.data;
             props.onLoggedIn(data);
         }).catch((e1)=>{
