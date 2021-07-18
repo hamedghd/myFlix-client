@@ -24,16 +24,16 @@ export class MainView extends React.Component {
     }
   }
   componentDidMount() {
-    // Queries my myFlix API server’s /movies endpoint with a get request using Axios:
-    axios.get('https://myflix-movieapi.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    // Gets the value of the token from localStorage.
+    let accessToken = localStorage.getItem('token');
+    // If the access token is present, it means the user is already logged in and you can call the getMovies method.
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      // Queries my myFlix API server’s /movies endpoint with a get request using Axios:
+      this.getMovies(accessToken);
+    }
   }
   /* When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie */
   setSelectedMovie(newSelectedMovie) {
