@@ -22189,6 +22189,7 @@ class MainView extends _reactDefault.default.Component {
                 md: 4,
                 lg: 3,
                 xl: 2,
+                key: movie._id,
                 className: "d-flex flex-column align-items-center",
                 __source: {
                     fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
@@ -25023,6 +25024,7 @@ function LoginView(props) {
             props.onLoggedIn(data);
         }).catch((e1)=>{
             console.log('No such user!');
+            console.error(e1);
         });
     };
     const handleRegister = ()=>{
@@ -25033,7 +25035,7 @@ function LoginView(props) {
         className: "justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 38
+            lineNumber: 39
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -25042,33 +25044,33 @@ function LoginView(props) {
         className: "login-style d-flex flex-column align-items-center text-center bg-dark p-2",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 39
+            lineNumber: 40
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
         className: "title",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 40
+            lineNumber: 41
         },
         __self: this
     }, "Log in to myFlix!"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 41
+            lineNumber: 42
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 42
+            lineNumber: 43
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 43
+            lineNumber: 44
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -25077,20 +25079,20 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 44
+            lineNumber: 45
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 47
+            lineNumber: 48
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 48
+            lineNumber: 49
         },
         __self: this
     }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -25099,7 +25101,7 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 49
+            lineNumber: 50
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -25109,14 +25111,14 @@ function LoginView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 52
+            lineNumber: 53
         },
         __self: this
     }, "Submit")), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Text, {
         className: "text-light",
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 57
+            lineNumber: 58
         },
         __self: this
     }, "Don't have an account?"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -25126,7 +25128,7 @@ function LoginView(props) {
         onClick: handleRegister,
         __source: {
             fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 58
+            lineNumber: 59
         },
         __self: this
     }, "Sign up!"))));
