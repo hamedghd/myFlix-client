@@ -25,6 +25,7 @@ export function LoginView(props) {
       })
       .catch(e => {
         console.log('No such user!');
+        console.error(e);
       });
   };
 
