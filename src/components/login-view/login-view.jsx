@@ -14,8 +14,18 @@ export function LoginView(props) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    axios.post('https://myflix-movieapi.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+      /* then call props.onLoggedIn(username) */
+      .then(Response => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch(e => {
+        console.log('No such user!');
+      });
   };
 
   const handleRegister = () => {
