@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import imageurl from "url:./myflix.png";
-
+import Button from 'react-bootstrap/Button';
 
 export class HeaderView extends React.Component {
 
@@ -24,6 +24,7 @@ export class HeaderView extends React.Component {
         {/*<Navbar.Text>
           Signed in as: <a href="#login">username</a>
         </Navbar.Text>*/}
+        <Button className="button-style btn-sm" onClick={() => { this.onLoggedOut() }}>Logout</Button>
       </Navbar >
     );
   }
