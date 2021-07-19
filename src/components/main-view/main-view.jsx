@@ -4,6 +4,7 @@ import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { HeaderView } from '../header-view/header-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -82,9 +83,15 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, register } = this.state;
     /* If there is no user, and is registered the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user && register) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegister={register => this.onRegister(register)} />;
+    if (!user && register) return [
+      < HeaderView />,
+      <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegister={register => this.onRegister(register)} />
+    ]
     /* If there is no user and no register , the RegistrationView  is rendered. */
-    if (!user && !register) return <RegistrationView onRegister={register => this.onRegister(register)} />;
+    if (!user && !register) return [
+      < HeaderView />,
+      <RegistrationView onRegister={register => this.onRegister(register)} />
+    ]
 
     // Before the movies have been loaded.
     if (movies.length === 0) return <div className="main-view" />;
@@ -92,6 +99,7 @@ export class MainView extends React.Component {
     return (
       <div>
         {/* If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned */}
+        <HeaderView />
         {selectedMovie
           ? (
             //<Row className="justify-content-md-center ">
