@@ -5,8 +5,15 @@ import imageurl from "url:./myflix.png";
 import Button from 'react-bootstrap/Button';
 
 export class HeaderView extends React.Component {
-
+  onLoggedout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
   render() {
+
     return (
       <Navbar className="navbar-style" bg="dark" variant="dark">
         <Navbar.Brand href="/">
