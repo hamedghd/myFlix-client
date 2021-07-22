@@ -1,0 +1,38 @@
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import PropTypes from 'prop-types';
+
+import './genre-view.scss';
+
+export class GenreView extends React.Component {
+  render() {
+    const { genre, onBackClick } = this.props;
+
+    return (
+      <Container fluid>
+        <div className="bg-dark genre-box">
+          <div className="genre-view">
+            <span className="label font-weight-bold">Genre: </span>
+            <span className="value">{genre.Name}</span>
+          </div>
+          <div class="genre-view">
+            <span className="label font-weight-bold">Description: </span>
+            <span className="value">{genre.Description}</span>
+          </div>
+          <Button variant="primary" className="button-style btn-sm" onClick={() => { onBackClick(null); }} >
+            Back
+          </Button>
+        </div>
+      </Container>
+    );
+  }
+}
+
+GenreView.propTypes = {
+  genre: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+  }),
+  onBackClick: PropTypes.func.isRequired,
+};
