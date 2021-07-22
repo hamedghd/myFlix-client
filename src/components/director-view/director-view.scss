@@ -1,0 +1,26 @@
+:root {
+  --bg1-color: #65ccb8;
+  --bg2-color: #3b945e;
+  --bg3-color: #182628;
+  --txt1-color: #F2F2F2;
+  --font-family: 'Lato', sans-serif;
+}
+
+.director-box {
+  border: 1px solid var(--txt1-color);
+  border-radius: .25rem;
+  padding: 10px;
+  text-align: justify;
+  margin: 10px;
+}
+
+.director-view {
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.button-style {
+  background-color: var(--bg2-color) !important;
+  border-color: var(--txt1-color) !important;
+  color: var(--txt1-color) !important;
+}
