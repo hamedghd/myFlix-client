@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 import './login-view.scss';
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -29,12 +31,6 @@ export function LoginView(props) {
       });
   };
 
-  const handleRegister = () => {
-    let register = false;
-    props.onRegister(register);
-
-  }
-
   return (
     <Row className="justify-content-md-center">
       <Col md={6} lg={4} className="login-style d-flex flex-column align-items-center text-center bg-dark p-2">
@@ -56,9 +52,11 @@ export function LoginView(props) {
         </Form>
 
         <Form.Text className="text-light">Don't have an account?</Form.Text>
-        <Button className="button-style" variant="primary" type="submit" onClick={handleRegister}>
-          Sign up!
-        </Button>
+        <Link to={`/register`}>
+          <Button className="button-style" variant="primary" type="submit">
+            Sign up!
+          </Button>
+        </Link>
       </Col>
     </Row>
   );
@@ -69,5 +67,4 @@ LoginView.propTypes = {
     Password: PropTypes.string.isRequired
   }),
   onLoggedIn: PropTypes.func.isRequired,
-  onRegister: PropTypes.func.isRequired
 };
