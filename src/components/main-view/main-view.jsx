@@ -55,6 +55,7 @@ export class MainView extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
+        console.error(error.response.data.error);
       });
   }
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
@@ -84,25 +85,41 @@ export class MainView extends React.Component {
           <HeaderView />
         </div>
          */}
-        <Navbar className="navbar-style" bg="dark" variant="dark">
-          <Navbar.Brand href="/">
-            <img src={imageurl} alt="logo"
-              width="100"
-              className="d-inline-block align-top"></img>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="#link">About</Nav.Link>
-              <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-          {/*<Navbar.Text>
-          Signed in as: <a href="#login">username</a>
-        </Navbar.Text>*/}
-          <Button className="button-style btn-sm" onClick={() => { this.onLoggedOut() }}>Logout</Button>
-        </Navbar >
+        {user ? (
+          <Navbar className="navbar-style" bg="dark" variant="dark">
+            <Navbar.Brand href="/">
+              <img src={imageurl} alt="logo"
+                width="100"
+                className="d-inline-block align-top"></img>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="#link">About</Nav.Link>
+                <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+            <Navbar.Text>
+              Signed in as: <a href="#login">{user}</a>
+            </Navbar.Text>
+            <Button className="button-style btn-sm" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+          </Navbar >) : (
+          <Navbar className="navbar-style" bg="dark" variant="dark">
+            <Navbar.Brand href="/">
+              <img src={imageurl} alt="logo"
+                width="100"
+                className="d-inline-block align-top"></img>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="#link">About</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar >
+        )}
 
         {/* <Row className="main-view justify-content-md-center"> */}
         <Row className="d-flex justify-content-center align-items-center mx-1">
