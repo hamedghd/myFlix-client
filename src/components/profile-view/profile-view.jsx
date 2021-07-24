@@ -16,23 +16,23 @@ export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userData: {},
-      newUsername: '',
-      newEmail: '',
-      newPassword: '',
-      newBirthday: '',
+      Username: "",
+      Password: "",
+      Email: "",
+      Birthday: "",
+      FavoriteMovies: []
     };
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('token');
-    if (token !== null) {
-      this.getUser(token);
+    const accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.getUser(accessToken);
     }
   }
 
   getUser(token) {
-    const username = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -40,15 +40,23 @@ export class ProfileView extends React.Component {
     };
 
     axios
-      .get(`https://myflix-movieapi.herokuapp.com/users/${username}`, config)
+      .get(`https://myflix-movieapi.herokuapp.com/users/${user}`, config)
       .then((res) => {
-        res.data.map((item) => {
-          this.setState({
-            userData: item,
-          });
+
+        this.setState({
+          Username: res.data.Username,
+          Password: res.data.Password,
+          Email: res.data.Email,
+          Birthday: res.data.Birthday,
+          FavoriteMovies: res.data.FavoriteMovies,
         });
+        console.log(res);
+        console.log('User data is received!');
       })
-      .catch((e) => console.log('Error Retrieving User Data'));
+      .catch((e) => {
+        console.log('Error Retrieving User Data');
+        console.log(e);
+      });
   }
 
   // Adds input data to state
@@ -56,15 +64,18 @@ export class ProfileView extends React.Component {
   // Remove account and log out user, returning to loginView
   handleRemoveAccount = () => {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
 
     axios
-      .delete(`https://myflix-movieapi.herokuapp.com/users/${username}`, {
+      .delete(`https://myflix-movieapi.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log('account deleted');
-        this.props.onLoggedOut();
+        console.log(user + " has been deleted.");
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        window.location.pathname = "/";
+
       })
       .catch((e) => console.log('error'));
 
@@ -74,11 +85,8 @@ export class ProfileView extends React.Component {
     e.preventDefault();
 
     // Credentials
-    const username = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-
-    // Form Data
-    const { newUsername, newPassword, newEmail, newBirthday } = this.state;
 
     const config = {
       headers: {
@@ -88,30 +96,39 @@ export class ProfileView extends React.Component {
 
     axios
       .put(
-        `https://myflix-movieapi.herokuapp.com/users/${username}`,
+        `https://myflix-movieapi.herokuapp.com/users/${user}`,
         {
-          Username: newUsername,
-          Password: newPassword,
-          Email: newEmail,
-          Birthday: newBirthday,
+          Username: this.state.Username,
+          Password: this.state.Password,
+          Email: this.state.Email,
+          Birthday: this.state.Birthday
         },
         config
       )
 
       .then((res) => {
-        console.log('Account Updated');
-        window.open('/', '_self');
-        //this.props.handleUpdateAccount();
+
         const data = res.data;
-        this.props.onLoggedIn(data);
+        localStorage.setItem('user', data.Username);
+
+        console.log(data);
+        console.log(user + " has been updated.");
+        console.log(res);
+        //window.open('/', '_self');
+
       })
-      //.catch((e) => console.log('Update Error'));
-      .catch((e) => console.log(e));
+
+      .catch((e) => {
+        console.log('Update Error');
+        console.log(e);
+        //console.log(e.res.data);
+      });
   };
 
   render() {
-    const { userData } = this.state;
-    if (!userData) return null;
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    if (!user) return null;
 
     return (
       <Row className="justify-content-md-center">
@@ -121,22 +138,22 @@ export class ProfileView extends React.Component {
           <Form className="">
             <Form.Group controlId="formUsername" >
               <Form.Label>Username:</Form.Label>
-              <Form.Control type="text" placeholder="New username" onChange={this.handleInputChange} required />
+              <Form.Control type="text" name="Username" placeholder="New username" onChange={this.handleInputChange} required />
             </Form.Group>
 
             <Form.Group controlId="formPassword" >
               <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" placeholder="New password" onChange={this.handleInputChange} required minLength="5" />
+              <Form.Control type="password" name="Password" placeholder="New password" onChange={this.handleInputChange} required minLength="5" />
             </Form.Group>
 
             <Form.Group controlId="formEmail" >
               <Form.Label>Email:</Form.Label>
-              <Form.Control type="email" placeholder="New email" onChange={this.handleInputChange} required />
+              <Form.Control type="email" name="Email" placeholder="New email" onChange={this.handleInputChange} required />
             </Form.Group>
 
             <Form.Group controlId="formBirthday" >
               <Form.Label>Birthday:</Form.Label>
-              <Form.Control type="date" placeholder="New birthday" onChange={this.handleInputChange} required />
+              <Form.Control type="date" name="Birthday" placeholder="New birthday" onChange={this.handleInputChange} required />
             </Form.Group>
 
             <Button className="button-style" variant="primary" type="submit" onClick={this.handleUpdateAccount}>
