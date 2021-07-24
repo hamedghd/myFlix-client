@@ -15,7 +15,6 @@ export function RegistrationView(props) {
   const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
-    alert('Thanks for signing up. You can log in now!');
     e.preventDefault();
     console.log(username, password, email, birthday);
     /* Send a request to the server for authentication */
@@ -67,3 +66,4 @@ export function RegistrationView(props) {
       </Row>
     );
   }
+}
