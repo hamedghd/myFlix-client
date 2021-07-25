@@ -32,41 +32,41 @@ export function RegistrationView(props) {
       .catch((e) => {
         console.log('error registering the user');
       });
-
-    return (
-      <Row className="justify-content-md-center">
-        <Col md={6} lg={4} className="registration-style bg-dark">
-          <h1 className="title">Sign up to myFlix!</h1>
-          <Form>
-            <Form.Group controlId="formUsername" >
-              <Form.Label>Username:</Form.Label>
-              <Form.Control type="text" onChange={e => setUsername(e.target.value)} required />
-            </Form.Group>
-
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" onChange={e => setPassword(e.target.value)} minLength="5" required />
-            </Form.Group>
-
-            <Form.Group controlId="formEmail">
-              <Form.Label>Email:</Form.Label>
-              <Form.Control type="email" onChange={e => setEmail(e.target.value)} required />
-            </Form.Group>
-
-            <Form.Group controlId="formBirthday">
-              <Form.Label>Birthday:</Form.Label>
-              <Form.Control type="date" onChange={e => setBirthday(e.target.value)} required />
-            </Form.Group>
-
-            <Button className="button-style" variant="primary" type="submit" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    );
   }
+  return (
+    <Row className="justify-content-md-center">
+      <Col md={6} lg={4} className="registration-style bg-dark">
+        <h1 className="title">Sign up to myFlix!</h1>
+        <Form>
+          <Form.Group controlId="formUsername" >
+            <Form.Label>Username:</Form.Label>
+            <Form.Control type="text" onChange={e => setUsername(e.target.value)} required />
+          </Form.Group>
+
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control type="password" onChange={e => setPassword(e.target.value)} minLength="5" required />
+          </Form.Group>
+
+          <Form.Group controlId="formEmail">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control type="email" onChange={e => setEmail(e.target.value)} required />
+          </Form.Group>
+
+          <Form.Group controlId="formBirthday">
+            <Form.Label>Birthday:</Form.Label>
+            <Form.Control type="date" onChange={e => setBirthday(e.target.value)} required />
+          </Form.Group>
+
+          <Button className="button-style" variant="primary" type="submit" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </Form>
+      </Col>
+    </Row>
+  );
 }
+
 RegistrationView.propTypes = {
   register: PropTypes.shape({
     Username: PropTypes.string.isRequired,
