@@ -75,6 +75,7 @@ export class MainView extends React.Component {
     this.setState({
       user: null,
     });
+    window.open('/', '_self');
   }
 
   // Uses MainView's state to control its UI.
