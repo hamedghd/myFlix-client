@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { instanceOf } from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -8,54 +8,100 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './registration-view.scss';
+
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
+  const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(username, password, email, birthday);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     /* Send a request to the server for authentication */
-    axios.post('https://api-myflix.herokuapp.com/users', {
+    axios.post('https://myflix-movieapi.herokuapp.com/users', {
       Username: username,
       Password: password,
       Email: email,
       Birthday: birthday,
     })
       .then((response) => {
-        const data = response.data;
-        console.log(data);
+        console.log('response:');
+        console.log(response.data);
+        /*const data = response.data;*/
+        //props.onRegister(data);
         window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+
       })
-      .catch((e) => {
-        console.log('error registering the user');
+      .catch((event) => {
+        console.log('error');
+        console.log(event.response);
+        alert(event.response.data);
       });
-  }
+    setValidated(true);
+  };
+
+
+
+
+  //const handleSubmit = (e) => {
+  //e.preventDefault();
+  //console.log(username, password, email, birthday);
+  ///* Send a request to the server for authentication */
+  //axios.post('https://api-myflix.herokuapp.com/users', {
+  //Username: username,
+  //Password: password,
+  //Email: email,
+  //Birthday: birthday,
+  //})
+  //.then((response) => {
+  //const data = response.data;
+  //console.log(data);
+  //console.error(response);
+  //window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+  //})
+  //.catch((e) => {
+  //alert('error registering the user');
+  //});
+  //}
+
+
   return (
     <Row className="justify-content-md-center">
       <Col md={6} lg={4} className="registration-style bg-dark">
         <h1 className="title">Sign up to myFlix!</h1>
-        <Form>
+        <Form noValidate validated={validated}>
           <Form.Group controlId="formUsername" >
             <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" onChange={e => setUsername(e.target.value)} required />
+            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} required />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please choose a username. </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="formPassword">
             <Form.Label>Password:</Form.Label>
-            <Form.Control type="password" onChange={e => setPassword(e.target.value)} minLength="5" required />
+            <Form.Control name="Password" type="password" onChange={e => setPassword(e.target.value)} minLength="5" required />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please choose a valid password. (minimum length = 5)</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="formEmail">
             <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" onChange={e => setEmail(e.target.value)} required />
+            <Form.Control name="Email" type="email" onChange={e => setEmail(e.target.value)} required />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please choose a valid Email address.</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="formBirthday">
             <Form.Label>Birthday:</Form.Label>
-            <Form.Control type="date" onChange={e => setBirthday(e.target.value)} required />
+            <Form.Control name="Birthday" type="date" onChange={e => setBirthday(e.target.value)} required />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please choose a valid date.</Form.Control.Feedback>
           </Form.Group>
 
           <Button className="button-style" variant="primary" type="submit" onClick={handleSubmit}>
