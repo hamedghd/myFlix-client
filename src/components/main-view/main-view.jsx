@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -27,7 +28,7 @@ export class MainView extends React.Component {
       // Sets movies state to an empty array.
       movies: [],
       // Sets initial value for user state to null
-      user: null
+      user: null,
     }
   }
   componentDidMount() {
@@ -68,13 +69,14 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
   }
-  onLoggedout() {
+  onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.setState({
-      user: null
+      user: null,
     });
   }
+
   // Uses MainView's state to control its UI.
   render() {
     const { movies, user } = this.state;
@@ -196,3 +198,8 @@ export class MainView extends React.Component {
 
   }
 }
+MovieView.propTypes = {
+  onBackClick: PropTypes.func.isRequired,
+  onLoggedout: PropTypes.func.isRequired,
+  onLoggedIn: PropTypes.func.isRequired,
+};
