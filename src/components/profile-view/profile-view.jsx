@@ -1,6 +1,7 @@
 // Import components
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MovieCard } from '../movie-card/movie-card';
 
 // Import styling
 import Button from 'react-bootstrap/Button';
@@ -16,12 +17,16 @@ export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {},
       Username: "",
       Password: "",
       Email: "",
       Birthday: "",
       FavoriteMovies: [],
-      validated: false
+      validated: false,
+      errorMessage: '',
+      errorStatus: '',
+      errorResponse: '',
     };
   }
 
@@ -33,7 +38,7 @@ export class ProfileView extends React.Component {
   }
 
   getUser(token) {
-    const user = localStorage.getItem('user');
+    const username = localStorage.getItem('user');
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -41,15 +46,18 @@ export class ProfileView extends React.Component {
     };
 
     axios
-      .get(`https://myflix-movieapi.herokuapp.com/users/${user}`, config)
+      .get(`https://myflix-movieapi.herokuapp.com/users/${username}`, config)
       .then((res) => {
 
         this.setState({
+          user: res.data,
+          /*
           Username: res.data.Username,
           Password: res.data.Password,
           Email: res.data.Email,
           Birthday: res.data.Birthday,
           FavoriteMovies: res.data.FavoriteMovies,
+          */
         });
         console.log(res);
         console.log('User data is received!');
@@ -65,14 +73,14 @@ export class ProfileView extends React.Component {
   // Remove account and log out user, returning to loginView
   handleRemoveAccount = () => {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
+    const username = localStorage.getItem('user');
 
     axios
-      .delete(`https://myflix-movieapi.herokuapp.com/users/${user}`, {
+      .delete(`https://myflix-movieapi.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(user + " has been deleted.");
+        console.log(username + " has been deleted.");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         window.location.pathname = "/";
@@ -90,7 +98,7 @@ export class ProfileView extends React.Component {
       e.stopPropagation();
     }
     // Credentials
-    const user = localStorage.getItem('user');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const config = {
       headers: {
@@ -100,12 +108,12 @@ export class ProfileView extends React.Component {
 
     axios
       .put(
-        `https://myflix-movieapi.herokuapp.com/users/${user}`,
+        `https://myflix-movieapi.herokuapp.com/users/${username}`,
         {
           Username: this.state.Username,
           Password: this.state.Password,
           Email: this.state.Email,
-          Birthday: this.state.Birthday
+          Birthday: this.state.Birthday,
         },
         config
       )
@@ -115,83 +123,136 @@ export class ProfileView extends React.Component {
         const data = res.data;
         localStorage.setItem('user', data.Username);
 
-        console.log(data);
-        console.log(user + " has been updated.");
+        console.log(username + " has been updated.");
         console.log(res);
         //window.open('/', '_self');
+        this.props.handleUpdateAccount();
 
       })
 
-      .catch((e) => {
+      .catch((error) => {
         console.log('Update Error');
+        console.log(error);
+        console.log(error.response.request);
         console.log(e);
-        //console.log(e.res.data);
+        this.setState({ errorStatus: error.response.request.status });
+        this.setState({ errorMessage: error.response.request.statusText });
+        this.setState({ errorResponse: error.response.request.response });
       });
     this.setState({
       validated: true,
     });
   };
-
-  render() {
-    const user = localStorage.getItem('user');
+  deleteMovie(e, movie) {
+    e.preventDefault();
     const token = localStorage.getItem('token');
-    if (!user) return null;
+    const username = localStorage.getItem('user');
+    axios({
+      method: 'delete',
+      url: `https://myflix-movieapi.herokuapp.com/users/${username}/movies/${movie._id}`,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(() => {
+        alert(`${movie.Title} is deleted from your Favorites`);
+        window.open(`/users/${username}`, '_self');
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  render() {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    const { FavoriteMovies } = this.state;
+    const { movies } = this.props;
+    if (!username) return null;
 
     return (
-      <Row className="justify-content-md-center">
-        <Col md={6} lg={4} className="profile-box bg-dark">
-          <h1 className="title">Update your profile information!</h1>
+      <div>
+        <Row className="justify-content-md-center">
+          <Col md={6} lg={4} className="profile-box bg-dark">
+            <h1 className="title">Update your profile information!</h1>
 
-          <Form noValidate validated={this.state.validated}>
-            <Form.Group controlId="formUsername" >
-              <Form.Label>Username:</Form.Label>
-              <Form.Control type="text" name="Username" placeholder="New username" onChange={this.handleInputChange} required />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Control.Feedback type="invalid"> Please choose a username. </Form.Control.Feedback>
-            </Form.Group>
+            <Form noValidate validated={this.state.validated}>
+              <Form.Group controlId="formUsername" >
+                <Form.Label>Username:</Form.Label>
+                <Form.Control type="text" name="newUsername" placeholder="New username" onChange={this.handleInputChange} pattern="[a-zA-Z0-9]+" required />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid"> Please choose an alphanumeric username. </Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group controlId="formPassword" >
-              <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" name="Password" placeholder="New password" onChange={this.handleInputChange} required minLength="5" />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Control.Feedback type="invalid"> Please choose a valid password. (minimum length = 5)</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group controlId="formPassword" >
+                <Form.Label>Password:</Form.Label>
+                <Form.Control type="password" name="newPassword" placeholder="New password" onChange={this.handleInputChange} required minLength="5" />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid"> Please choose a valid password. (minimum length = 5)</Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group controlId="formEmail" >
-              <Form.Label>Email:</Form.Label>
-              <Form.Control type="email" name="Email" placeholder="New email" onChange={this.handleInputChange} required />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Control.Feedback type="invalid"> Please choose a valid Email address.</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group controlId="formEmail" >
+                <Form.Label>Email:</Form.Label>
+                <Form.Control type="email" name="newEmail" placeholder="New email" onChange={this.handleInputChange} required />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid"> Please choose a valid Email address.</Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group controlId="formBirthday" >
-              <Form.Label>Birthday:</Form.Label>
-              <Form.Control type="date" name="Birthday" placeholder="New birthday" onChange={this.handleInputChange} required />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Control.Feedback type="invalid"> Please choose a valid date.</Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group controlId="formBirthday" >
+                <Form.Label>Birthday:</Form.Label>
+                <Form.Control type="date" name="newBirthday" placeholder="New birthday" onChange={this.handleInputChange} required />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid"> Please choose a valid date.</Form.Control.Feedback>
+              </Form.Group>
 
-            <Button className="button-style" variant="primary" type="submit" onClick={this.handleUpdateAccount}>
-              Update
-            </Button>
-          </Form>
-          <small className="text-light text-center">
-            Or you can{' '}
-            <Link to="/">
-              <span
-                className="register text-primary"
-                onClick={this.handleRemoveAccount}
-              >
-                remove your account
-              </span>
-            </Link>
-          </small>
-        </Col>
-      </Row>
+              <Button className="button-style" variant="primary" type="submit" onClick={this.handleUpdateAccount}>
+                Update
+              </Button>
+            </Form>
+            {this.state.errorMessage &&
+              <div>
+                <Form.Text className="error-style">Error status: {this.state.errorStatus} : {this.state.errorMessage}</Form.Text>
+                <Form.Text className="error-style">{this.state.errorResponse}</Form.Text>
+              </div>}
+            <small className="text-light text-center">
+              Or you can{' '}
+              <Link to="/">
+                <span
+                  className="register text-primary"
+                  onClick={this.handleRemoveAccount}
+                >
+                  remove your account
+                </span>
+              </Link>
+            </small>
+          </Col>
+        </Row>
+        <div className="text-center bg-dark p-2">
+          <h1>List of favorite movies:</h1>
+        </div>
+        {FavoriteMovies.length === 0 && (
+          <div className="d-flex flex-column align-items-center">
+            You have no favorite movies.
+          </div>
+        )}
+        {FavoriteMovies.length != 0 && (
+          <Row className="fav-style">
+            {movies.map(m => {
+              if (m._id === FavoriteMovies.find((favoriteMovieID) => favoriteMovieID === m._id)
+              ) {
+                return (
+                  <Col xs={12} sm={6} md={4} lg={3} xl={2} key={m._id} className="d-flex flex-column align-items-center">
+                    <MovieCard movieData={m} />
+                    <Button className="delete-style" variant="primary" value={m._id} onClick={(e) => this.deleteMovie(e, m)}>Remove from Favorites</Button>
+                  </Col>
+                )
+              }
+            })}
+          </Row>
+        )}
+      </div>
     );
   }
 }
 
 ProfileView.propTypes = {
-  user: PropTypes.string.isRequired
-};
+  user: PropTypes.object,
+  movies: PropTypes.array.isRequired
+}
