@@ -15,6 +15,10 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
   const [validated, setValidated] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorStatus, setErrorStatus] = useState('');
+  const [errorResponse, setErrorResponse] = useState('');
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,7 +45,12 @@ export function RegistrationView(props) {
       .catch((event) => {
         console.log('error');
         console.log(event.response);
-        alert(event.response.data);
+        console.log(event.response.request);
+        {/*alert(event.response.data);*/ }
+        setErrorStatus(event.response.request.status);
+        setErrorMessage(event.response.request.statusText);
+        setErrorResponse(event.response.request.response);
+
       });
     setValidated(true);
   };
@@ -78,9 +87,9 @@ export function RegistrationView(props) {
         <Form noValidate validated={validated}>
           <Form.Group controlId="formUsername" >
             <Form.Label>Username:</Form.Label>
-            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} required />
+            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} pattern="[a-zA-Z0-9]+" required />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid"> Please choose a username. </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please choose an alphanumeric username. </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="formPassword">
@@ -108,6 +117,12 @@ export function RegistrationView(props) {
             Submit
           </Button>
         </Form>
+        {errorMessage &&
+          <div>
+            <Form.Text className="error-style">Error status: {errorStatus} : {errorMessage}</Form.Text>
+            <Form.Text className="error-style">{errorResponse}</Form.Text>
+          </div>
+        }
       </Col>
     </Row>
   );
