@@ -12,6 +12,10 @@ export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorStatus, setErrorStatus] = useState('');
+  const [errorResponse, setErrorResponse] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,45 +35,58 @@ export function LoginView(props) {
         const data = response.data;
         props.onLoggedIn(data);
       })
-      .catch(e => {
+      .catch(error => {
         console.log('No such user!');
-        alert('User or password is incorrect!');
-        console.error(e);
+        //alert('User or password is incorrect!');
+        console.error(error);
+        console.log(error.response.request);
+        setErrorStatus(error.response.request.status);
+        setErrorMessage(error.response.request.statusText);
+        setErrorResponse(error.response.request.response);
+
       });
     setValidated(true);
 
   };
 
   return (
-    <Row className="justify-content-md-center">
-      <Col md={6} lg={4} className="login-style d-flex flex-column align-items-center text-center bg-dark p-2">
-        <h1 className="title">Log in to myFlix!</h1>
-        <Form noValidate validated={validated}>
-          <Form.Group controlId="formUsername">
-            <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" onChange={e => setUsername(e.target.value)} required />
-            <Form.Control.Feedback type="invalid"> Please insert your username. </Form.Control.Feedback>
-          </Form.Group>
+    <div>
+      <Row className="justify-content-md-center" >
+        <Col md={6} lg={4} className="login-style d-flex flex-column align-items-center text-center bg-dark p-2">
+          <h1 className="title">Log in to myFlix!</h1>
+          <Form noValidate validated={validated}>
+            <Form.Group controlId="formUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control type="text" onChange={e => setUsername(e.target.value)} required />
+              <Form.Control.Feedback type="invalid"> Please insert your username. </Form.Control.Feedback>
+            </Form.Group>
 
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password:</Form.Label>
-            <Form.Control type="password" onChange={e => setPassword(e.target.value)} required />
-            <Form.Control.Feedback type="invalid"> Please insert your password.</Form.Control.Feedback>
-          </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control type="password" onChange={e => setPassword(e.target.value)} required />
+              <Form.Control.Feedback type="invalid"> Please insert your password.</Form.Control.Feedback>
+            </Form.Group>
 
-          <Button className="button-style" variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
-          </Button>
-        </Form>
+            <Button className="button-style" variant="primary" type="submit" onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Form>
+          {errorMessage &&
+            <div>
+              <Form.Text className="error-style">Error status: {errorStatus} : {errorMessage}</Form.Text>
+              <Form.Text className="error-style">{errorResponse}</Form.Text>
+            </div>
+          }
 
-        <Form.Text className="text-light">Don't have an account?</Form.Text>
-        <Link to={`/register`}>
-          <Button className="button-style" variant="primary" type="submit">
-            Sign up!
-          </Button>
-        </Link>
-      </Col>
-    </Row>
+          <Form.Text className="text-light">Don't have an account?</Form.Text>
+          <Link to={`/register`}>
+            <Button className="button-style" variant="primary" type="submit">
+              Sign up!
+            </Button>
+          </Link>
+        </Col>
+      </Row>
+    </div>
   );
 }
 LoginView.propTypes = {
