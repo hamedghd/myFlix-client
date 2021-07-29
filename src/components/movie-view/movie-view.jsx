@@ -2,11 +2,43 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import './movie-view.scss';
 export class MovieView extends React.Component {
 
-
+  addMovie(e, movie) {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    axios({
+      method: 'patch',
+      url: `https://myflix-movieapi.herokuapp.com/users/${username}/movies/${movie._id}`,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(() => {
+        alert(`${movie.Title} is added to your Favorites`);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+  deleteMovie(e, movie) {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    axios({
+      method: 'delete',
+      url: `https://myflix-movieapi.herokuapp.com/users/${username}/movies/${movie._id}`,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(() => {
+        alert(`${movie.Title} is deleted from your Favorites`);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
   render() {
     const { movie, onBackClick } = this.props;
 
@@ -51,7 +83,12 @@ export class MovieView extends React.Component {
         <Button className="button-style" variant="primary" type="submit" onClick={() => { onBackClick(null); }}>
           Back
         </Button>
-
+        <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.addMovie(e, movie)} >
+          Add to Favorites
+        </Button>
+        <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.deleteMovie(e, movie)} >
+          Delete from Favorites
+        </Button>
       </div>
     );
   }
@@ -73,4 +110,6 @@ MovieView.propTypes = {
     }),
   }).isRequired,
   onBackClick: PropTypes.func.isRequired,
+  onLoggedout: PropTypes.func.isRequired,
+  onLoggedIn: PropTypes.func.isRequired,
 };
