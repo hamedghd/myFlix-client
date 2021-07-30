@@ -17,7 +17,7 @@ export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      //user: {},
       Username: "",
       Password: "",
       Email: "",
@@ -50,14 +50,14 @@ export class ProfileView extends React.Component {
       .then((res) => {
 
         this.setState({
-          user: res.data,
-          /*
+          //user: res.data,
+
           Username: res.data.Username,
           Password: res.data.Password,
           Email: res.data.Email,
           Birthday: res.data.Birthday,
           FavoriteMovies: res.data.FavoriteMovies,
-          */
+
         });
         console.log(res);
         console.log('User data is received!');
@@ -69,7 +69,11 @@ export class ProfileView extends React.Component {
   }
 
   // Adds input data to state
-  handleInputChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.name);
+    console.log(e.target.value);
+  };
   // Remove account and log out user, returning to loginView
   handleRemoveAccount = () => {
     const token = localStorage.getItem('token');
@@ -100,6 +104,8 @@ export class ProfileView extends React.Component {
     // Credentials
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
+    //const { newUsername, newPassword, newEmail, newBirthday } = this.state;
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -124,17 +130,15 @@ export class ProfileView extends React.Component {
         localStorage.setItem('user', data.Username);
 
         console.log(username + " has been updated.");
-        console.log(res);
+        console.log(res.data);
         //window.open('/', '_self');
-        this.props.handleUpdateAccount();
-
       })
 
       .catch((error) => {
         console.log('Update Error');
         console.log(error);
         console.log(error.response.request);
-        console.log(e);
+        console.log(error.response);
         this.setState({ errorStatus: error.response.request.status });
         this.setState({ errorMessage: error.response.request.statusText });
         this.setState({ errorResponse: error.response.request.response });
@@ -176,28 +180,28 @@ export class ProfileView extends React.Component {
             <Form noValidate validated={this.state.validated}>
               <Form.Group controlId="formUsername" >
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" name="newUsername" placeholder="New username" onChange={this.handleInputChange} pattern="[a-zA-Z0-9]+" required />
+                <Form.Control type="text" name="Username" value={username} disabled placeholder={username} onChange={this.handleInputChange} pattern="[a-zA-Z0-9]+" required />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid"> Please choose an alphanumeric username. </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="formPassword" >
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" name="newPassword" placeholder="New password" onChange={this.handleInputChange} required minLength="5" />
+                <Form.Control type="password" name="Password" placeholder="New password" onChange={this.handleInputChange} required minLength="5" />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid"> Please choose a valid password. (minimum length = 5)</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="formEmail" >
                 <Form.Label>Email:</Form.Label>
-                <Form.Control type="email" name="newEmail" placeholder="New email" onChange={this.handleInputChange} required />
+                <Form.Control type="email" name="Email" placeholder="New email" onChange={this.handleInputChange} required />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid"> Please choose a valid Email address.</Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group controlId="formBirthday" >
                 <Form.Label>Birthday:</Form.Label>
-                <Form.Control type="date" name="newBirthday" placeholder="New birthday" onChange={this.handleInputChange} required />
+                <Form.Control type="date" name="Birthday" placeholder="New birthday" onChange={this.handleInputChange} required />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid"> Please choose a valid date.</Form.Control.Feedback>
               </Form.Group>
