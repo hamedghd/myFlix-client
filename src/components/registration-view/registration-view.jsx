@@ -87,7 +87,7 @@ export function RegistrationView(props) {
         <Form noValidate validated={validated}>
           <Form.Group controlId="formUsername" >
             <Form.Label>Username:</Form.Label>
-            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} pattern="[a-zA-Z0-9]+" required />
+            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} minLength="5" pattern="[a-zA-Z0-9]+" required />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid"> Please choose an alphanumeric username. </Form.Control.Feedback>
           </Form.Group>
