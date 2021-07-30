@@ -6,7 +6,51 @@ import axios from 'axios';
 
 import './movie-view.scss';
 export class MovieView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Username: "",
+      Password: "",
+      Email: "",
+      Birthday: "",
+      FavoriteMovies: [],
+    };
+  }
+  componentDidMount() {
+    const accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.getUser(accessToken);
+    }
+  }
+  getUser(token) {
+    const username = localStorage.getItem('user');
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
+    axios
+      .get(`https://myflix-movieapi.herokuapp.com/users/${username}`, config)
+      .then((res) => {
+
+        this.setState({
+
+          Username: res.data.Username,
+          Password: res.data.Password,
+          Email: res.data.Email,
+          Birthday: res.data.Birthday,
+          FavoriteMovies: res.data.FavoriteMovies,
+
+        });
+        console.log(res);
+        console.log('User data is received!');
+      })
+      .catch((e) => {
+        console.log('Error Retrieving User Data');
+        console.log(e);
+      });
+  }
   addMovie(e, movie) {
     e.preventDefault();
     const token = localStorage.getItem('token');
@@ -41,7 +85,10 @@ export class MovieView extends React.Component {
   }
   render() {
     const { movie, onBackClick } = this.props;
-
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    const { FavoriteMovies } = this.state;
+    const { movies } = this.props;
     return (
       <div className="movie-view bg-dark">
         <div className="centered">
@@ -83,12 +130,20 @@ export class MovieView extends React.Component {
         <Button className="button-style" variant="primary" type="submit" onClick={() => { onBackClick(null); }}>
           Back
         </Button>
-        <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.addMovie(e, movie)} >
-          Add to Favorites
-        </Button>
-        <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.deleteMovie(e, movie)} >
-          Delete from Favorites
-        </Button>
+
+        {(movie._id === FavoriteMovies.find((favoriteMovieID) => favoriteMovieID === movie._id)) ? (
+          <div>
+            <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.deleteMovie(e, movie)} >
+              Delete from Favorites
+            </Button>
+          </div>
+        ) : (
+          <div>
+            <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.addMovie(e, movie)} >
+              Add to Favorites
+            </Button>
+          </div>
+        )}
       </div>
     );
   }
@@ -110,6 +165,6 @@ MovieView.propTypes = {
     }),
   }).isRequired,
   onBackClick: PropTypes.func.isRequired,
-  onLoggedout: PropTypes.func.isRequired,
-  onLoggedIn: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired
+
 };
