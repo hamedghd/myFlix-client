@@ -37,16 +37,13 @@ export function RegistrationView(props) {
       .then((response) => {
         console.log('response:');
         console.log(response.data);
-        /*const data = response.data;*/
-        //props.onRegister(data);
         window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
 
       })
       .catch((event) => {
         console.log('error');
         console.log(event.response);
-        console.log(event.response.request);
-        {/*alert(event.response.data);*/ }
+        console.log(event.response.request.response);
         setErrorStatus(event.response.request.status);
         setErrorMessage(event.response.request.statusText);
         setErrorResponse(event.response.request.response);
@@ -54,31 +51,6 @@ export function RegistrationView(props) {
       });
     setValidated(true);
   };
-
-
-
-
-  //const handleSubmit = (e) => {
-  //e.preventDefault();
-  //console.log(username, password, email, birthday);
-  ///* Send a request to the server for authentication */
-  //axios.post('https://api-myflix.herokuapp.com/users', {
-  //Username: username,
-  //Password: password,
-  //Email: email,
-  //Birthday: birthday,
-  //})
-  //.then((response) => {
-  //const data = response.data;
-  //console.log(data);
-  //console.error(response);
-  //window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
-  //})
-  //.catch((e) => {
-  //alert('error registering the user');
-  //});
-  //}
-
 
   return (
     <Row className="justify-content-md-center">
