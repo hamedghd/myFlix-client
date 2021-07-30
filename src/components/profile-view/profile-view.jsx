@@ -50,7 +50,6 @@ export class ProfileView extends React.Component {
       .then((res) => {
 
         this.setState({
-          //user: res.data,
 
           Username: res.data.Username,
           Password: res.data.Password,
@@ -104,7 +103,6 @@ export class ProfileView extends React.Component {
     // Credentials
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    //const { newUsername, newPassword, newEmail, newBirthday } = this.state;
 
     const config = {
       headers: {
@@ -137,7 +135,6 @@ export class ProfileView extends React.Component {
       .catch((error) => {
         console.log('Update Error');
         console.log(error);
-        console.log(error.response.request);
         console.log(error.response);
         this.setState({ errorStatus: error.response.request.status });
         this.setState({ errorMessage: error.response.request.statusText });
