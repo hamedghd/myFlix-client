@@ -121,6 +121,7 @@ a {
   background-color: var(--bg2-color) !important;
   border-color: var(--txt1-color) !important;
   color: var(--txt1-color) !important;
+  margin: 5px !important;
 }
 /* .centered {
   display: flex;
