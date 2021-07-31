@@ -26151,6 +26151,11 @@ class MovieView extends _reactDefault.default.Component {
             FavoriteMovies: []
         };
     }
+    refresh = ()=>{
+        // re-renders the component
+        this.setState({
+        });
+    };
     componentDidMount() {
         const accessToken = localStorage.getItem('token');
         if (accessToken !== null) this.getUser(accessToken);
@@ -26189,6 +26194,7 @@ class MovieView extends _reactDefault.default.Component {
             }
         }).then(()=>{
             alert(`${movie.Title} is added to your Favorites`);
+            window.location.reload();
         }).catch(function(err) {
             console.log(err);
         });
@@ -26205,6 +26211,7 @@ class MovieView extends _reactDefault.default.Component {
             }
         }).then(()=>{
             alert(`${movie.Title} is deleted from your Favorites`);
+            window.location.reload();
         }).catch(function(err) {
             console.log(err);
         });
@@ -26219,14 +26226,14 @@ class MovieView extends _reactDefault.default.Component {
             className: "movie-view bg-dark",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 93
+                lineNumber: 103
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "centered",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 94
+                lineNumber: 104
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -26234,53 +26241,11 @@ class MovieView extends _reactDefault.default.Component {
             src: movie.ImagePath,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 95
+                lineNumber: 105
             },
             __self: this
         })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-title",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 98
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 99
-            },
-            __self: this
-        }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 100
-            },
-            __self: this
-        }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-description",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 103
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "label",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 104
-            },
-            __self: this
-        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
-            className: "value",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 105
-            },
-            __self: this
-        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-genre",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
                 lineNumber: 108
@@ -26293,46 +26258,88 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 109
             },
             __self: this
-        }, "Genre:", ' '), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 112
+                lineNumber: 110
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: `/genres/${movie.Genre.Name}`,
+        }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-description",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
                 lineNumber: 113
-            },
-            __self: this
-        }, movie.Genre.Name))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "movie-director",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 119
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 120
+                lineNumber: 114
+            },
+            __self: this
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 115
+            },
+            __self: this
+        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-genre",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 118
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 119
+            },
+            __self: this
+        }, "Genre:", ' '), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 122
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/genres/${movie.Genre.Name}`,
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 123
+            },
+            __self: this
+        }, movie.Genre.Name))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-director",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 129
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 130
             },
             __self: this
         }, "Director:", ' '), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 123
+                lineNumber: 133
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/directors/${movie.Director.Name}`,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 124
+                lineNumber: 134
             },
             __self: this
         }, movie.Director.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -26344,42 +26351,44 @@ class MovieView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 130
+                lineNumber: 140
             },
             __self: this
         }, "Back"), movie._id === FavoriteMovies.find((favoriteMovieID)=>favoriteMovieID === movie._id
         ) ? /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 135
+                lineNumber: 145
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             className: "button-style",
             variant: "primary",
             value: movie._id,
-            onClick: (e)=>this.deleteMovie(e, movie)
-            ,
+            onClick: (e)=>{
+                this.deleteMovie(e, movie);
+            },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 136
+                lineNumber: 146
             },
             __self: this
         }, "Delete from Favorites")) : /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 141
+                lineNumber: 154
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             className: "button-style",
             variant: "primary",
             value: movie._id,
-            onClick: (e)=>this.addMovie(e, movie)
-            ,
+            onClick: (e)=>{
+                this.addMovie(e, movie);
+            },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
-                lineNumber: 142
+                lineNumber: 155
             },
             __self: this
         }, "Add to Favorites"))));

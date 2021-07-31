@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
 import './movie-view.scss';
 export class MovieView extends React.Component {
   constructor(props) {
@@ -16,6 +15,10 @@ export class MovieView extends React.Component {
       FavoriteMovies: [],
     };
   }
+  refresh = () => {
+    // re-renders the component
+    this.setState({});
+  };
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
@@ -51,10 +54,12 @@ export class MovieView extends React.Component {
         console.log(e);
       });
   }
+
   addMovie(e, movie) {
     e.preventDefault();
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
+
     axios({
       method: 'patch',
       url: `https://myflix-movieapi.herokuapp.com/users/${username}/movies/${movie._id}`,
@@ -62,15 +67,18 @@ export class MovieView extends React.Component {
     })
       .then(() => {
         alert(`${movie.Title} is added to your Favorites`);
+        window.location.reload();
       })
       .catch(function (err) {
         console.log(err);
       });
+
   }
   deleteMovie(e, movie) {
     e.preventDefault();
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
+
     axios({
       method: 'delete',
       url: `https://myflix-movieapi.herokuapp.com/users/${username}/movies/${movie._id}`,
@@ -78,6 +86,8 @@ export class MovieView extends React.Component {
     })
       .then(() => {
         alert(`${movie.Title} is deleted from your Favorites`);
+        window.location.reload();
+
       })
       .catch(function (err) {
         console.log(err);
@@ -133,13 +143,19 @@ export class MovieView extends React.Component {
 
         {(movie._id === FavoriteMovies.find((favoriteMovieID) => favoriteMovieID === movie._id)) ? (
           <div>
-            <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.deleteMovie(e, movie)} >
+            <Button className="button-style" variant="primary" value={movie._id}
+              onClick={(e) => {
+                this.deleteMovie(e, movie);
+              }} >
               Delete from Favorites
             </Button>
           </div>
         ) : (
           <div>
-            <Button className="button-style" variant="primary" value={movie._id} onClick={(e) => this.addMovie(e, movie)} >
+            <Button className="button-style" variant="primary" value={movie._id}
+              onClick={(e) => {
+                this.addMovie(e, movie);
+              }} >
               Add to Favorites
             </Button>
           </div>
