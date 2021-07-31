@@ -70,8 +70,8 @@ export class ProfileView extends React.Component {
   // Adds input data to state
   handleInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.name);
-    console.log(e.target.value);
+    //console.log(e.target.name);
+    /*console.log(e.target.value);*/
   };
   // Remove account and log out user, returning to loginView
   handleRemoveAccount = () => {
@@ -109,40 +109,89 @@ export class ProfileView extends React.Component {
         Authorization: `Bearer ${token}`,
       },
     };
+    if (this.state.Username != username) {
+      console.log('Username is different.');
+      axios
+        .post(
+          `https://myflix-movieapi.herokuapp.com/users`,
+          {
+            Username: this.state.Username,
+            Password: this.state.Password,
+            Email: this.state.Email,
+            Birthday: this.state.Birthday,
+            FavoriteMovies: this.state.FavoriteMovies,
+          },
+          config
+        )
 
-    axios
-      .put(
-        `https://myflix-movieapi.herokuapp.com/users/${username}`,
-        {
-          Username: this.state.Username,
-          Password: this.state.Password,
-          Email: this.state.Email,
-          Birthday: this.state.Birthday,
-        },
-        config
-      )
+        .then((res) => {
 
-      .then((res) => {
+          const data = res.data;
+          //localStorage.setItem('user', data.Username);
+          console.log(username + " has been updated.");
+          console.log(res.data);
+          //window.open('/', '_self');
+        })
 
-        const data = res.data;
-        localStorage.setItem('user', data.Username);
-
-        console.log(username + " has been updated.");
-        console.log(res.data);
-        //window.open('/', '_self');
-      })
-
-      .catch((error) => {
-        console.log('Update Error');
-        console.log(error);
-        console.log(error.response);
-        this.setState({ errorStatus: error.response.request.status });
-        this.setState({ errorMessage: error.response.request.statusText });
-        this.setState({ errorResponse: error.response.request.response });
+        .catch((error) => {
+          console.log('Update Error');
+          console.log(error);
+          console.log(error.response);
+          this.setState({ errorStatus: error.response.request.status });
+          this.setState({ errorMessage: error.response.request.statusText });
+          this.setState({ errorResponse: error.response.request.response });
+        });
+      this.setState({
+        validated: true,
       });
-    this.setState({
-      validated: true,
-    });
+      axios
+        .delete(`https://myflix-movieapi.herokuapp.com/users/${username}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          console.log(username + " has been deleted.");
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+
+        })
+        .catch((e) => console.log('error'));
+    }
+    else {
+      axios
+        .put(
+          `https://myflix-movieapi.herokuapp.com/users/${username}`,
+          {
+            Username: this.state.Username,
+            Password: this.state.Password,
+            Email: this.state.Email,
+            Birthday: this.state.Birthday,
+          },
+          config
+        )
+
+        .then((res) => {
+
+          const data = res.data;
+          localStorage.setItem('user', data.Username);
+
+          console.log(username + " has been updated.");
+          console.log(res.data);
+          //window.open('/', '_self');
+        })
+
+        .catch((error) => {
+          console.log('Update Error');
+          console.log(error);
+          console.log(error.response);
+          this.setState({ errorStatus: error.response.request.status });
+          this.setState({ errorMessage: error.response.request.statusText });
+          this.setState({ errorResponse: error.response.request.response });
+        });
+      this.setState({
+        validated: true,
+      });
+    }
+
   };
   deleteMovie(e, movie) {
     e.preventDefault();
@@ -177,7 +226,7 @@ export class ProfileView extends React.Component {
             <Form noValidate validated={this.state.validated}>
               <Form.Group controlId="formUsername" >
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" name="Username" value={username} disabled placeholder={username} onChange={this.handleInputChange} pattern="[a-zA-Z0-9]+" required />
+                <Form.Control type="text" name="Username" /*value={username} disabled placeholder={username}*/ onChange={this.handleInputChange} pattern="[a-zA-Z0-9]+" required />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid"> Please choose an alphanumeric username. </Form.Control.Feedback>
               </Form.Group>
@@ -255,5 +304,7 @@ export class ProfileView extends React.Component {
 
 ProfileView.propTypes = {
   user: PropTypes.object,
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.array.isRequired,
+  onLoggedIn: PropTypes.func.isRequired,
+
 }
