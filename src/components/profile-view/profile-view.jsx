@@ -109,6 +109,7 @@ export class ProfileView extends React.Component {
         Authorization: `Bearer ${token}`,
       },
     };
+
     if (this.state.Username != username) {
       console.log('Username is different.');
       axios
@@ -157,9 +158,11 @@ export class ProfileView extends React.Component {
         .catch((e) => console.log('error'));
     }
     else {
+
       axios
         .put(
           `https://myflix-movieapi.herokuapp.com/users/${username}`,
+          /* `https://myflix-movieapi.herokuapp.com/users/profile`, */
           {
             Username: this.state.Username,
             Password: this.state.Password,
