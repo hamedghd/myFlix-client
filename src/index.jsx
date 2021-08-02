@@ -16,11 +16,13 @@ class MyFlixApplication extends React.Component {
 
   render() {
     return (
-      <Container className="container-fluid p-0" fluid="true">
-        <div className="my-flix">
-          <MainView />
-        </div>
-      </Container>
+      <Provider store={store}>
+        <Container className="container-fluid p-0" fluid="true">
+          <div className="my-flix">
+            <MainView />
+          </div>
+        </Container>
+      </Provider>
     );
   }
 }
