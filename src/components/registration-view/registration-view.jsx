@@ -15,6 +15,10 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
   const [validated, setValidated] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorStatus, setErrorStatus] = useState('');
+  const [errorResponse, setErrorResponse] = useState('');
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,43 +37,20 @@ export function RegistrationView(props) {
       .then((response) => {
         console.log('response:');
         console.log(response.data);
-        /*const data = response.data;*/
-        //props.onRegister(data);
         window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
 
       })
       .catch((event) => {
         console.log('error');
         console.log(event.response);
-        alert(event.response.data);
+        console.log(event.response.request.response);
+        setErrorStatus(event.response.request.status);
+        setErrorMessage(event.response.request.statusText);
+        setErrorResponse(event.response.request.response);
+
       });
     setValidated(true);
   };
-
-
-
-
-  //const handleSubmit = (e) => {
-  //e.preventDefault();
-  //console.log(username, password, email, birthday);
-  ///* Send a request to the server for authentication */
-  //axios.post('https://api-myflix.herokuapp.com/users', {
-  //Username: username,
-  //Password: password,
-  //Email: email,
-  //Birthday: birthday,
-  //})
-  //.then((response) => {
-  //const data = response.data;
-  //console.log(data);
-  //console.error(response);
-  //window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
-  //})
-  //.catch((e) => {
-  //alert('error registering the user');
-  //});
-  //}
-
 
   return (
     <Row className="justify-content-md-center">
@@ -78,9 +59,9 @@ export function RegistrationView(props) {
         <Form noValidate validated={validated}>
           <Form.Group controlId="formUsername" >
             <Form.Label>Username:</Form.Label>
-            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} required />
+            <Form.Control name="Username" type="text" onChange={e => setUsername(e.target.value)} minLength="5" pattern="[a-zA-Z0-9]+" required />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid"> Please choose a username. </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please choose an alphanumeric username. </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group controlId="formPassword">
@@ -108,6 +89,12 @@ export function RegistrationView(props) {
             Submit
           </Button>
         </Form>
+        {errorMessage &&
+          <div>
+            <Form.Text className="error-style">Error status: {errorStatus} : {errorMessage}</Form.Text>
+            <Form.Text className="error-style">{errorResponse}</Form.Text>
+          </div>
+        }
       </Col>
     </Row>
   );
