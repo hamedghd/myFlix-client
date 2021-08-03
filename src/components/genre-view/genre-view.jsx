@@ -7,7 +7,7 @@ import './genre-view.scss';
 
 export class GenreView extends React.Component {
   render() {
-    const { genre, onBackClick } = this.props;
+    const { genre, onBackClick, movies } = this.props;
 
     return (
       <Container fluid>
@@ -20,6 +20,16 @@ export class GenreView extends React.Component {
             <span className="label font-weight-bold">Description: </span>
             <span className="value">{genre.Description}</span>
           </div>
+          <Row>
+            <div className="genre-list">
+              <span className="label font-weight-bold">Movies: </span>
+              {movies.map((m) => (
+                <div className="movie" key={m._id}>
+                  {m.Title}
+                </div>
+              ))}
+            </div>
+          </Row>
           <Button variant="primary" className="button-style btn-sm" onClick={() => { onBackClick(null); }} >
             Back
           </Button>
