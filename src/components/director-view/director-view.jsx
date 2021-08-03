@@ -23,6 +23,10 @@ export class DirectorView extends React.Component {
             <span className="label font-weight-bold">Born: </span>
             <span className="value">{director.Birth}</span>
           </div>
+          <div className="director-view">
+            <span className="label font-weight-bold">Death: </span>
+            <span className="value">{director.Death}</span>
+          </div>
           <Button className="button-style btn-sm" variant="info" size="sm" onClick={() => { onBackClick(null); }} >
             Back
           </Button>
