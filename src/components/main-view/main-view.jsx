@@ -23,7 +23,7 @@ import imageurl from "url:../../img/myflix.png";
 import Button from 'react-bootstrap/Button';
 
 import './main-view.scss';
-export class MainView extends React.Component {
+class MainView extends React.Component {
   // Movies state will hold the list of movies.
   constructor() {
     super();
