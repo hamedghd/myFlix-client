@@ -30,6 +30,8 @@ class MainView extends React.Component {
     this.state = {
       // Sets initial value for user state to null
       user: null,
+      // Sets initial value for movies state to an empty array
+      movies: [],
     }
   }
   componentDidMount() {
