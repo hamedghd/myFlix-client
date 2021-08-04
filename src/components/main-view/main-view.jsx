@@ -14,6 +14,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
+import { AboutView } from '../about-view/about-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -109,14 +110,14 @@ class MainView extends React.Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#link">About</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
                 <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
               </Nav>
             </Navbar.Collapse>
             <Navbar.Text>
               Signed in as: <a href="#login">{user}</a>
             </Navbar.Text>
-            <Button className="button-style btn-sm" onClick={() => { this.onLoggedOut() }}>Logout</Button>
+            <Button className="button-style btn-sm ml-3" onClick={() => { this.onLoggedOut() }}>Logout</Button>
           </Navbar >) : (
           <Navbar className="navbar-style" bg="dark" variant="dark">
             <Navbar.Brand href="/">
@@ -213,6 +214,13 @@ class MainView extends React.Component {
             </Col>
           }
           } />
+
+          <Route path="/about" render={({ match, history }) => {
+            return <Col>
+              <AboutView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+          }} />
+
         </Row>
       </Router>
     );
@@ -227,8 +235,9 @@ let mapStateToProps = state => {
 }
 export default connect(mapStateToProps, { setMovies, setUser })(MainView);
 
-MovieView.propTypes = {
-  onBackClick: PropTypes.func.isRequired,
-  onLoggedout: PropTypes.func.isRequired,
-  onLoggedIn: PropTypes.func.isRequired,
+MainView.propTypes = {
+  setMovies: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  user: PropTypes.string.isRequired,
 };
