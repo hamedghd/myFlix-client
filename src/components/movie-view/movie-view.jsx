@@ -91,10 +91,9 @@ export class MovieView extends React.Component {
   }
   render() {
     const { movie, onBackClick } = this.props;
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+    //const username = localStorage.getItem('user');
+    /*const token = localStorage.getItem('token');*/
     const { FavoriteMovies } = this.state;
-    const { movies } = this.props;
     return (
       <div className="movie-view bg-dark">
         <div className="centered">
@@ -177,6 +176,4 @@ MovieView.propTypes = {
     }),
   }).isRequired,
   onBackClick: PropTypes.func.isRequired,
-  movies: PropTypes.array.isRequired
-
 };
