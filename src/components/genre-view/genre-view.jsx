@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import PropTypes from 'prop-types';
+import Row from 'react-bootstrap/Row';
 
 import './genre-view.scss';
 
@@ -43,6 +44,7 @@ GenreView.propTypes = {
   genre: PropTypes.shape({
     Name: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
+    movies: PropTypes.array.isRequired,
   }),
   onBackClick: PropTypes.func.isRequired,
 };
