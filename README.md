@@ -1,12 +1,15 @@
 # myFlix-client
 
 ## About the project
-This is the client side of myFlix, a movie application.
+This is the client side of myFlix, a movie application. It is base on an existing server-side application called Movie-API.
 
 ## Technologies:
 
 The following technologies are used:
 - React
+- Redux
+- Bootstrap
+- Parcel
 
 ## Getting Started
 
