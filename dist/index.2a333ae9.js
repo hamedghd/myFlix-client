@@ -29535,9 +29535,9 @@ class GenreView extends _reactDefault.default.Component {
 GenreView.propTypes = {
     genre: _propTypesDefault.default.shape({
         Name: _propTypesDefault.default.string.isRequired,
-        Description: _propTypesDefault.default.string.isRequired,
-        movies: _propTypesDefault.default.array.isRequired
+        Description: _propTypesDefault.default.string.isRequired
     }),
+    movies: _propTypesDefault.default.array.isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 
