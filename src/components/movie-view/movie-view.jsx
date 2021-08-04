@@ -15,10 +15,6 @@ export class MovieView extends React.Component {
       FavoriteMovies: [],
     };
   }
-  refresh = () => {
-    // re-renders the component
-    this.setState({});
-  };
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
