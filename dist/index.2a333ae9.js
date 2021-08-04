@@ -29435,8 +29435,6 @@ var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
 var _genreViewScss = require("./genre-view.scss");
 class GenreView extends _reactDefault.default.Component {
     render() {
@@ -29445,76 +29443,70 @@ class GenreView extends _reactDefault.default.Component {
             fluid: true,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 14
+                lineNumber: 13
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "bg-dark genre-box",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 15
+                lineNumber: 14
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "genre-view",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 16
+                lineNumber: 15
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label font-weight-bold",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 17
+                lineNumber: 16
             },
             __self: this
         }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 18
+                lineNumber: 17
             },
             __self: this
         }, genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             class: "genre-view",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 20
+                lineNumber: 19
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label font-weight-bold",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 21
+                lineNumber: 20
             },
             __self: this
         }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 22
+                lineNumber: 21
             },
             __self: this
-        }, genre.Description)), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 24
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, genre.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "genre-list",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 25
+                lineNumber: 23
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label font-weight-bold",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 26
+                lineNumber: 24
             },
             __self: this
         }, "Movies: "), movies.map((m)=>/*#__PURE__*/ _reactDefault.default.createElement("div", {
@@ -29522,11 +29514,11 @@ class GenreView extends _reactDefault.default.Component {
                 key: m._id,
                 __source: {
                     fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                    lineNumber: 28
+                    lineNumber: 26
                 },
                 __self: this
             }, m.Title)
-        ))), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        )), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "primary",
             className: "button-style btn-sm",
             onClick: ()=>{
@@ -29534,7 +29526,7 @@ class GenreView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 34
+                lineNumber: 31
             },
             __self: this
         }, "Back"))));
@@ -29554,7 +29546,7 @@ GenreView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-bootstrap/Container":"3Mt3t","prop-types":"4dfy5","./genre-view.scss":"12cEw","@parcel/transformer-js/src/esmodule-helpers.js":"WhbI2","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3oehH","react-bootstrap/Row":"3fzwD"}],"12cEw":[function() {},{}],"3qLFd":[function(require,module,exports) {
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-bootstrap/Container":"3Mt3t","prop-types":"4dfy5","./genre-view.scss":"12cEw","@parcel/transformer-js/src/esmodule-helpers.js":"WhbI2","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3oehH"}],"12cEw":[function() {},{}],"3qLFd":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
