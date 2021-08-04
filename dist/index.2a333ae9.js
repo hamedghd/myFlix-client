@@ -22074,17 +22074,19 @@ class MainView extends _reactDefault.default.Component {
         super();
         this.state = {
             // Sets initial value for user state to null
-            user: null
+            user: null,
+            // Sets initial value for movies state to an empty array
+            movies: []
         };
     }
     componentDidMount() {
         // Gets the value of the token from localStorage.
         let accessToken = localStorage.getItem('token');
+        // Gets the value of the user from localStorage.
+        let user = localStorage.getItem('user');
         // If the access token is present, it means the user is already logged in and you can call the getMovies method.
         if (accessToken !== null) {
-            this.setState({
-                user: localStorage.getItem('user')
-            });
+            this.props.setUser(user);
             // Queries my myFlix API server’s /movies endpoint with a get request using Axios:
             this.getMovies(accessToken);
         }
@@ -22104,9 +22106,7 @@ class MainView extends _reactDefault.default.Component {
     }
     /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/ onLoggedIn(authData) {
         console.log(authData);
-        this.setState({
-            user: authData.user.Username
-        });
+        this.props.setUser(authData.user.Username);
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
         this.getMovies(authData.token);
@@ -22420,11 +22420,13 @@ class MainView extends _reactDefault.default.Component {
 }
 let mapStateToProps = (state)=>{
     return {
-        movies: state.movies
+        movies: state.movies,
+        user: state.user
     };
 };
 exports.default = _reactRedux.connect(mapStateToProps, {
-    setMovies: _actions.setMovies
+    setMovies: _actions.setMovies,
+    setUser: _actions.setUser
 })(MainView);
 _movieView.MovieView.propTypes = {
     onBackClick: _propTypesDefault.default.func.isRequired,
@@ -34041,7 +34043,7 @@ function MoviesList(props) {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
-            movie: m,
+            movieData: m,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\movies-list\\movies-list.jsx",
                 lineNumber: 29
