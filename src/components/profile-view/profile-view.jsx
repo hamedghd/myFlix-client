@@ -11,13 +11,12 @@ import Col from 'react-bootstrap/Col';
 // Import routing
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './profile-view.scss'
+import './profile-view.scss';
 
 export class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //user: {},
       Username: "",
       Password: "",
       Email: "",
@@ -27,6 +26,7 @@ export class ProfileView extends React.Component {
       errorMessage: '',
       errorStatus: '',
       errorResponse: '',
+      movies: [],
     };
   }
 

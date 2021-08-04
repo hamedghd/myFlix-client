@@ -31962,7 +31962,6 @@ class ProfileView extends _reactDefault.default.Component {
     constructor(props){
         super(props);
         this.state = {
-            //user: {},
             Username: "",
             Password: "",
             Email: "",
@@ -31971,7 +31970,8 @@ class ProfileView extends _reactDefault.default.Component {
             validated: false,
             errorMessage: '',
             errorStatus: '',
-            errorResponse: ''
+            errorResponse: '',
+            movies: []
         };
     }
     componentDidMount() {
