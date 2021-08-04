@@ -27,12 +27,14 @@ class MainView extends React.Component {
   // Movies state will hold the list of movies.
   constructor() {
     super();
+    /*
     this.state = {
       // Sets initial value for user state to null
       user: null,
       // Sets initial value for movies state to an empty array
       movies: [],
     }
+    */
   }
   componentDidMount() {
     // Gets the value of the token from localStorage.
@@ -41,7 +43,13 @@ class MainView extends React.Component {
     let user = localStorage.getItem('user');
     // If the access token is present, it means the user is already logged in and you can call the getMovies method.
     if (accessToken !== null) {
+      /*
+            this.setState({
+              user: localStorage.getItem('user')
+            });
+      */
       this.props.setUser(user);
+      console.log(user);
       // Queries my myFlix API server’s /movies endpoint with a get request using Axios:
       this.getMovies(accessToken);
     }
@@ -71,15 +79,17 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    /*
     this.setState({
       user: null,
     });
+    */
     window.open('/', '_self');
   }
 
   // Uses MainView's state to control its UI.
   render() {
-    const { user } = this.state;
+    const { user } = this.props;
     const { movies } = this.props;
     return (
       <Router>
@@ -180,7 +190,11 @@ class MainView extends React.Component {
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
+              <DirectorView
+                director={movies.find(m => m.Director.Name === match.params.name).Director}
+                movies={movies.filter((m) => m.Director.Name === match.params.name)}
+                onBackClick={() => history.goBack()}
+              />
             </Col>
           }
           } />
