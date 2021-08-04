@@ -1,6 +1,7 @@
 import React from 'react';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
@@ -25,11 +26,17 @@ function MoviesList(props) {
       <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     </Col>
     {filteredMovies.map(m => (
-      <Col md={3} key={m._id}>
+      <Col xs={12} sm={6} md={4} lg={3} xl={2} key={m._id} className="d-flex flex-column align-items-center" key={m._id}>
         <MovieCard movieData={m} />
       </Col>
     ))}
   </>;
 }
 
+
 export default connect(mapStateToProps)(MoviesList);
+
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
+  visibilityFilter: PropTypes.string.isRequired,
+};
