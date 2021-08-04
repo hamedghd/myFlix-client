@@ -306,8 +306,8 @@ export class ProfileView extends React.Component {
 }
 
 ProfileView.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.string.isRequired,
   movies: PropTypes.array.isRequired,
   onLoggedIn: PropTypes.func.isRequired,
-
+  onBackClick: PropTypes.func.isRequired,
 }
