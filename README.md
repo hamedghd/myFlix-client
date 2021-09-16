@@ -1,4 +1,11 @@
 # myFlix-client
+<p align="center">
+  <img src="src/img/myflix-screen1.JPG" width="520">
+<p>
+<br>
+<p align="center">
+  <img src="src/img/myflix-screen2.JPG" width="520">
+  </p>
 
 ## About the project
 This is the client side of myFlix, a movie application. It is base on an existing server-side application called Movie-API.
