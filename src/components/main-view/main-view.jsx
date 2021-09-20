@@ -22,7 +22,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 //import imageurl from "url:../../img/myflix.png";
 // Use full URL
-import imageurl from "https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
+//import imageurl from "https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
 import Button from 'react-bootstrap/Button';
 
 import './main-view.scss';
@@ -122,11 +122,11 @@ class MainView extends React.Component {
             <Button className="button-style btn-sm ml-3" onClick={() => { this.onLoggedOut() }}>Logout</Button>
           </Navbar >) : (
           <Navbar className="navbar-style" bg="dark" variant="dark">
-            <Navbar.Brand href="/">
+            {/* <Navbar.Brand href="/">
               <img src={imageurl} alt="logo"
                 width="100"
                 className="d-inline-block align-top"></img>
-            </Navbar.Brand>
+          </Navbar.Brand> */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
