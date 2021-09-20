@@ -22064,11 +22064,11 @@ var _navbar = require("react-bootstrap/Navbar");
 var _navbarDefault = parcelHelpers.interopDefault(_navbar);
 var _nav = require("react-bootstrap/Nav");
 var _navDefault = parcelHelpers.interopDefault(_nav);
-//import imageurl from "url:../../img/myflix.png";
+//import imageUrl from "url:../../img/myflix.png";
 // Use full URL
-var _myflixPng = require("url:https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png");
+//import imageUrl from "url:https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
+var _myflixPng = require("url:../../img/myflix.png");
 var _myflixPngDefault = parcelHelpers.interopDefault(_myflixPng);
-//import imageurl from 'url:../../img/myflix.png';
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _mainViewScss = require("./main-view.scss");
@@ -22156,69 +22156,59 @@ class MainView extends _reactDefault.default.Component {
                 lineNumber: 107
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-            src: _myflixPngDefault.default,
-            alt: "logo",
-            width: "100",
-            className: "d-inline-block align-top",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 108
-            },
-            __self: this
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
+        }, "MyFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
             "aria-controls": "basic-navbar-nav",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 112
+                lineNumber: 113
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
             id: "basic-navbar-nav",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 113
+                lineNumber: 114
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default, {
             className: "me-auto",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 114
+                lineNumber: 115
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "/",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 115
+                lineNumber: 116
             },
             __self: this
         }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "/about",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 116
+                lineNumber: 117
             },
             __self: this
         }, "About"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: `/users/${user}`,
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 117
+                lineNumber: 118
             },
             __self: this
         }, "Profile"))), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Text, {
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 120
+                lineNumber: 121
             },
             __self: this
         }, "Signed in as: ", /*#__PURE__*/ _reactDefault.default.createElement("a", {
             href: "#login",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 121
+                lineNumber: 122
             },
             __self: this
         }, user)), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -22228,7 +22218,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 123
+                lineNumber: 124
             },
             __self: this
         }, "Logout")) : /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
@@ -22237,66 +22227,56 @@ class MainView extends _reactDefault.default.Component {
             variant: "dark",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 125
+                lineNumber: 126
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
             href: "/",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 126
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-            src: _myflixPngDefault.default,
-            alt: "logo",
-            width: "100",
-            className: "d-inline-block align-top",
-            __source: {
-                fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                 lineNumber: 127
             },
             __self: this
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
+        }, "MyFlix"), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
             "aria-controls": "basic-navbar-nav",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 131
+                lineNumber: 133
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
             id: "basic-navbar-nav",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 132
+                lineNumber: 134
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default, {
             className: "me-auto",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 133
+                lineNumber: 135
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "/",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 134
+                lineNumber: 136
             },
             __self: this
         }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "#link",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 135
+                lineNumber: 137
             },
             __self: this
         }, "About")))), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "d-flex justify-content-center align-items-center mx-1",
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 142
+                lineNumber: 144
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22320,7 +22300,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 144
+                lineNumber: 146
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22333,7 +22313,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 157
+                lineNumber: 159
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22353,7 +22333,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 164
+                lineNumber: 166
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22379,7 +22359,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 181
+                lineNumber: 183
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22403,7 +22383,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 191
+                lineNumber: 193
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22427,7 +22407,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 206
+                lineNumber: 208
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22439,7 +22419,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\zahra.zolbanin\\Desktop\\Careerfoundry\\Client-Side_programming_and_React\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 221
+                lineNumber: 223
             },
             __self: this
         }))));
@@ -22467,7 +22447,7 @@ MainView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"WhbI2","react":"3b2NM","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3oehH","../movie-view/movie-view":"25i7G","axios":"7rA65","../login-view/login-view":"60Hd5","../registration-view/registration-view":"RomhW","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","./main-view.scss":"4bDUX","react-router-dom":"1PMSK","../director-view/director-view":"2dv8o","../genre-view/genre-view":"67Bzr","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Nav":"3T3v1","react-bootstrap/Button":"1ru0l","../profile-view/profile-view":"6a04M","prop-types":"4dfy5","react-redux":"7GDa4","../../actions/actions":"5S6cN","../movies-list/movies-list":"3qGXX","../about-view/about-view":"1KiFc","url:https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png":"3RDbF"}],"25i7G":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"WhbI2","react":"3b2NM","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3oehH","../movie-view/movie-view":"25i7G","axios":"7rA65","../login-view/login-view":"60Hd5","../registration-view/registration-view":"RomhW","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","./main-view.scss":"4bDUX","react-router-dom":"1PMSK","../director-view/director-view":"2dv8o","../genre-view/genre-view":"67Bzr","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Nav":"3T3v1","react-bootstrap/Button":"1ru0l","../profile-view/profile-view":"6a04M","prop-types":"4dfy5","react-redux":"7GDa4","../../actions/actions":"5S6cN","../movies-list/movies-list":"3qGXX","../about-view/about-view":"1KiFc","url:../../img/myflix.png":"27TPr"}],"25i7G":[function(require,module,exports) {
 var helpers = require("../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34205,8 +34185,8 @@ class AboutView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-bootstrap/Container":"3Mt3t","prop-types":"4dfy5","@parcel/transformer-js/src/esmodule-helpers.js":"WhbI2","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3oehH","./about-view.scss":"3bHuO"}],"3bHuO":[function() {},{}],"3RDbF":[function(require,module,exports) {
-module.exports = require('./bundle-url').getBundleURL() + "https-browserify.1511cbf7.js";
+},{"react":"3b2NM","react-bootstrap/Button":"1ru0l","react-bootstrap/Container":"3Mt3t","prop-types":"4dfy5","@parcel/transformer-js/src/esmodule-helpers.js":"WhbI2","../../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3oehH","./about-view.scss":"3bHuO"}],"3bHuO":[function() {},{}],"27TPr":[function(require,module,exports) {
+module.exports = require('./bundle-url').getBundleURL() + "myflix.6d237637.png";
 
 },{"./bundle-url":"6ewpN"}],"6ewpN":[function(require,module,exports) {
 "use strict";

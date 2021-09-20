@@ -20,10 +20,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-//import imageurl from "url:../../img/myflix.png";
+//import imageUrl from "url:../../img/myflix.png";
 // Use full URL
-import imageurl from "url:https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
-//import imageurl from 'url:../../img/myflix.png';
+//import imageUrl from "url:https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
+import imageUrl from 'url:../../img/myflix.png';
 import Button from 'react-bootstrap/Button';
 
 import './main-view.scss';
@@ -105,9 +105,10 @@ class MainView extends React.Component {
         {user ? (
           <Navbar className="navbar-style" bg="dark" variant="dark">
             <Navbar.Brand href="/">
-              <img src={imageurl} alt="logo"
+              {/* <img src={imageUrl} alt="logo"
                 width="100"
-                className="d-inline-block align-top"></img>
+                className="d-inline-block align-top"></img> */}
+              MyFlix
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -123,10 +124,11 @@ class MainView extends React.Component {
             <Button className="button-style btn-sm ml-3" onClick={() => { this.onLoggedOut() }}>Logout</Button>
           </Navbar >) : (
           <Navbar className="navbar-style" bg="dark" variant="dark">
-            <Navbar.Brand href="/">
-              <img src={imageurl} alt="logo"
+            <Navbar.Brand href="/" >
+              {/*<img src={imageUrl} alt="logo"
                 width="100"
-                className="d-inline-block align-top"></img>
+                className="d-inline-block align-top"></img>*/}
+              MyFlix
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
