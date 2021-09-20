@@ -36,5 +36,6 @@ open the application in browser on port 1234 (or port number stated in terminal)
 https://localhost:1234/
 ```
 ## Project link:
-https://github.com/hamedghd/myFlix-client
+- Github: https://github.com/hamedghd/myFlix-client
+- Online: https://myflix-movieapi.netlify.app/
 
