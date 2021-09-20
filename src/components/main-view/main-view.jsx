@@ -23,7 +23,7 @@ import Nav from 'react-bootstrap/Nav';
 //import imageUrl from "url:../../img/myflix.png";
 // Use full URL
 //import imageUrl from "url:https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
-import imageUrl from 'url:../../img/myflix.png';
+//import imageUrl from 'url:../../img/myflix.png';
 import Button from 'react-bootstrap/Button';
 
 import './main-view.scss';
