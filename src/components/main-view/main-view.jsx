@@ -20,7 +20,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import imageurl from "url:../../img/myflix.png";
+//import imageurl from "url:../../img/myflix.png";
+// Use full URL
+import imageurl from "https://raw.githubusercontent.com/hamedghd/myFlix-client/134dfa2a16a68a396073c783dbe523db4b069b0e/src/img/myflix.png";
 import Button from 'react-bootstrap/Button';
 
 import './main-view.scss';
